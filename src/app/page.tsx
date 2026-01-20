@@ -32,9 +32,9 @@ export default function Home() {
               </h1>
             </div>
 
-            <p className="max-w-2xl text-lg text-foreground/80 md:text-xl">
-              토익의 본질은 Vocabulary, Listening, and Reading 세 가지balance에 있습니다.
-              흔들리지 않는 실력의 시작, 지금 바로 실천해보세요.
+            <p className="max-w-2xl text-lg text-foreground/80 md:text-xl whitespace-pre-line">
+              {`토익의 본질은 Vocabulary, Listening, and Reading 세 가지balance에 있습니다.
+흔들리지 않는 실력의 시작, 지금 바로 실천해보세요.`}
             </p>
 
             <div className="flex flex-col space-y-4 pt-4 sm:flex-row sm:space-y-0 sm:space-x-4">
