@@ -94,8 +94,8 @@
 }
 
 @layer utilities {
-  .atom {
-    animation: float ease-in-out infinite alternate;
+  .star-bg {
+    animation: twinkle-bg ease-in-out infinite alternate;
   }
   .animated-gradient-text {
     background: linear-gradient(to right, hsl(var(--foreground)), hsl(204, 100%, 70%), hsl(var(--foreground)));
@@ -113,14 +113,12 @@
   100% { background-position: 0% 50%; }
 }
 
-@keyframes float {
+@keyframes twinkle-bg {
   from {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.1;
+    opacity: 0;
   }
   to {
-    transform: translate(calc(var(--tx, 0) * 1px), calc(var(--ty, 0) * 1px)) scale(1.05);
-    opacity: 0.2;
+    opacity: 0.7;
   }
 }
 

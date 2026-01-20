@@ -2,51 +2,45 @@
 
 import { useEffect, useState } from 'react';
 
-type Atom = {
+type Star = {
   id: number;
   size: number;
   left: string;
   top: string;
   animationDuration: string;
   animationDelay: string;
-  tx: number;
-  ty: number;
 };
 
 const DynamicBackground = () => {
-  const [atoms, setAtoms] = useState<Atom[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-    const numAtoms = 25;
-    const generatedAtoms = Array.from({ length: numAtoms }).map((_, i) => ({
+    const numStars = 150;
+    const generatedStars = Array.from({ length: numStars }).map((_, i) => ({
       id: i,
-      size: Math.random() * 80 + 20, // 20px to 100px
+      size: Math.random() * 2 + 1, // 1px to 3px
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      animationDuration: `${Math.random() * 20 + 20}s`, // 20s to 40s
-      animationDelay: `-${Math.random() * 20}s`,
-      tx: (Math.random() - 0.5) * 150,
-      ty: (Math.random() - 0.5) * 150,
+      animationDuration: `${Math.random() * 2 + 1}s`, // 1s to 3s
+      animationDelay: `${Math.random() * 3}s`,
     }));
-    setAtoms(generatedAtoms);
+    setStars(generatedStars);
   }, []);
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden">
-      {atoms.map((atom) => (
+      {stars.map((star) => (
         <div
-          key={atom.id}
-          className="atom absolute rounded-full bg-primary/10"
+          key={star.id}
+          className="star-bg absolute rounded-full bg-foreground/70"
           style={
             {
-              width: atom.size,
-              height: atom.size,
-              left: atom.left,
-              top: atom.top,
-              animationDuration: atom.animationDuration,
-              animationDelay: atom.animationDelay,
-              '--tx': atom.tx,
-              '--ty': atom.ty,
+              width: star.size,
+              height: star.size,
+              left: star.left,
+              top: star.top,
+              animationDuration: star.animationDuration,
+              animationDelay: star.animationDelay,
             } as React.CSSProperties
           }
         />
