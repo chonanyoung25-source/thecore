@@ -84,21 +84,21 @@ export default function Home() {
 
       <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3">
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader>
+          <CardHeader className="py-10">
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Vocabulary
             </CardTitle>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader>
+          <CardHeader className="py-10">
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Listening
             </CardTitle>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader>
+          <CardHeader className="py-10">
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Reading
             </CardTitle>
