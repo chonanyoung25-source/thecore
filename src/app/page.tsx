@@ -90,34 +90,34 @@ export default function Home() {
 
       <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3">
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 flex flex-col items-center justify-center">
+          <CardHeader className="py-10 px-6 flex flex-col items-start justify-center">
             <BookOpenText className="w-12 h-12 mb-4 text-foreground" />
-            <CardTitle className="text-center text-xl font-semibold text-foreground">
+            <CardTitle className="text-xl font-semibold text-foreground">
               Vocabulary
             </CardTitle>
-            <CardDescription className="text-center text-foreground/80 mt-2">
+            <CardDescription className="text-foreground/80 mt-2">
               Expand your word power.
             </CardDescription>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 flex flex-col items-center justify-center">
+          <CardHeader className="py-10 px-6 flex flex-col items-start justify-center">
             <Headphones className="w-12 h-12 mb-4 text-foreground" />
-            <CardTitle className="text-center text-xl font-semibold text-foreground">
+            <CardTitle className="text-xl font-semibold text-foreground">
               Listening
             </CardTitle>
-            <CardDescription className="text-center text-foreground/80 mt-2">
+            <CardDescription className="text-foreground/80 mt-2">
               Sharpen your listening skills.
             </CardDescription>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 flex flex-col items-center justify-center">
+          <CardHeader className="py-10 px-6 flex flex-col items-start justify-center">
             <FileText className="w-12 h-12 mb-4 text-foreground" />
-            <CardTitle className="text-center text-xl font-semibold text-foreground">
+            <CardTitle className="text-xl font-semibold text-foreground">
               Reading
             </CardTitle>
-            <CardDescription className="text-center text-foreground/80 mt-2">
+            <CardDescription className="text-foreground/80 mt-2">
               Improve your reading comprehension.
             </CardDescription>
           </CardHeader>
