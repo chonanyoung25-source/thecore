@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 224 71% 4%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 231 48% 48%;
@@ -45,13 +45,13 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 224 71% 4%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 231 48% 48%;
@@ -126,8 +126,8 @@
 
 .visualization-container {
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   transform-style: preserve-3d;
   animation: spin-all 40s linear infinite;
   display: flex;
@@ -164,10 +164,10 @@
 
 .core-sphere {
   position: absolute;
-  width: 405px;
-  height: 405px;
+  width: 270px;
+  height: 270px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.2));
+  background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.1));
   animation: pulse-glow 4s ease-in-out infinite, counter-spin-all 40s linear infinite;
 }
 
@@ -204,8 +204,8 @@
 
 .geo-sphere {
   position: absolute;
-  width: 675px;
-  height: 675px;
+  width: 450px;
+  height: 450px;
   transform-style: preserve-3d;
   animation: spin-geo 40s linear infinite reverse;
 }
@@ -236,22 +236,22 @@
 }
 
 .orbit-1 {
-  width: 855px;
-  height: 855px;
+  width: 570px;
+  height: 570px;
   transform: rotateX(70deg) rotateY(20deg);
   animation: spin-orbit-1 12s linear infinite;
 }
 
 .orbit-2 {
-  width: 720px;
-  height: 720px;
+  width: 480px;
+  height: 480px;
   transform: rotateX(70deg) rotateY(140deg);
   animation: spin-orbit-2 18s linear infinite reverse;
 }
 
 .orbit-3 {
-  width: 990px;
-  height: 990px;
+  width: 660px;
+  height: 660px;
   transform: rotateX(70deg) rotateY(260deg);
   animation: spin-orbit-3 15s linear infinite;
 }
@@ -279,29 +279,29 @@
 }
 
 .satellite-1 {
-  width: 12px;
-  height: 12px;
-  top: 50%;
-  left: -6px;
-  margin-top: -6px;
-  animation: move-sat-1 12s linear infinite, stay-facing 40s linear infinite reverse;
-}
-
-.satellite-2 {
   width: 8px;
   height: 8px;
   top: 50%;
   left: -4px;
   margin-top: -4px;
+  animation: move-sat-1 12s linear infinite, stay-facing 40s linear infinite reverse;
+}
+
+.satellite-2 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: -2.5px;
+  margin-top: -2.5px;
   animation: move-sat-2 18s linear infinite reverse, stay-facing 40s linear infinite reverse;
 }
 
 .satellite-3 {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   top: 50%;
-  left: -7.5px;
-  margin-top: -7.5px;
+  left: -5px;
+  margin-top: -5px;
   animation: move-sat-3 15s linear infinite, stay-facing 40s linear infinite reverse;
 }
 
@@ -315,14 +315,14 @@
 }
 
 @keyframes move-sat-1 {
-  from { transform: rotateZ(0deg) translateX(427.5px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(427.5px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(285px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(285px) rotateZ(360deg); }
 }
 @keyframes move-sat-2 {
-  from { transform: rotateZ(0deg) translateX(360px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(360px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(240px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(240px) rotateZ(360deg); }
 }
 @keyframes move-sat-3 {
-  from { transform: rotateZ(0deg) translateX(495px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(495px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(330px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(330px) rotateZ(360deg); }
 }
