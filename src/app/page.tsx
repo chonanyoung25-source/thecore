@@ -1,20 +1,6 @@
 import DynamicBackground from '@/components/dynamic-background';
-import { Button } from '@/components/ui/button';
-import {
-  BookOpen,
-  BarChartBig,
-  GraduationCap,
-  ArrowRight,
-} from 'lucide-react';
-import type { ReactNode } from 'react';
 import CoreVisualization from '@/components/core-visualization';
-
-const Feature = ({ icon, text }: { icon: ReactNode; text: string }) => (
-  <div className="flex items-center gap-2">
-    {icon}
-    <span className="font-medium">{text}</span>
-  </div>
-);
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
   return (
@@ -51,20 +37,28 @@ export default function Home() {
         </div>
       </div>
 
-
-      <div className="absolute bottom-16 z-10 flex w-full flex-wrap justify-center gap-x-12 gap-y-4 text-sm text-foreground/70">
-        <Feature
-          icon={<BookOpen className="h-5 w-5 text-accent" />}
-          text="Comprehensive Content"
-        />
-        <Feature
-          icon={<BarChartBig className="h-5 w-5 text-accent" />}
-          text="Personalized Analytics"
-        />
-        <Feature
-          icon={<GraduationCap className="h-5 w-5 text-accent" />}
-          text="Expert Strategies"
-        />
+      <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
+        <Card className="border-white/10 bg-card/60 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="text-center text-xl font-semibold text-foreground">
+              Vocabulary
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="border-white/10 bg-card/60 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="text-center text-xl font-semibold text-foreground">
+              Listening
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="border-white/10 bg-card/60 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="text-center text-xl font-semibold text-foreground">
+              Reading
+            </CardTitle>
+          </CardHeader>
+        </Card>
       </div>
 
       <footer className="absolute bottom-4 z-10 w-full text-center text-xs text-foreground/50">
