@@ -32,7 +32,7 @@ const DynamicBackground = () => {
       {stars.map((star) => (
         <div
           key={star.id}
-          className="star-bg absolute rounded-full bg-foreground/70"
+          className="star-bg absolute rounded-full bg-foreground"
           style={
             {
               width: star.size,
