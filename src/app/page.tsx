@@ -1,11 +1,51 @@
 import DynamicBackground from '@/components/dynamic-background';
 import CoreVisualization from '@/components/core-visualization';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-background text-foreground">
       <DynamicBackground />
+
+      <header className="absolute top-0 right-0 z-20 p-8">
+        <nav>
+          <ul className="flex items-center space-x-8">
+            <li>
+              <Link
+                href="#"
+                className="font-headline text-foreground/80 transition-colors hover:text-foreground"
+              >
+                Main
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#"
+                className="font-headline text-foreground/80 transition-colors hover:text-foreground"
+              >
+                Vocabulary
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#"
+                className="font-headline text-foreground/80 transition-colors hover:text-foreground"
+              >
+                Listening
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#"
+                className="font-headline text-foreground/80 transition-colors hover:text-foreground"
+              >
+                Reading
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-background/80 to-background" />
 
