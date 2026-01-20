@@ -126,8 +126,8 @@
 
 .visualization-container {
   position: relative;
-  width: 900px;
-  height: 900px;
+  width: 600px;
+  height: 600px;
   transform-style: preserve-3d;
   animation: spin-all 40s linear infinite;
   display: flex;
@@ -164,8 +164,8 @@
 
 .core-sphere {
   position: absolute;
-  width: 607.5px;
-  height: 607.5px;
+  width: 405px;
+  height: 405px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.2));
   animation: pulse-glow 4s ease-in-out infinite, counter-spin-all 40s linear infinite;
@@ -204,8 +204,8 @@
 
 .geo-sphere {
   position: absolute;
-  width: 1012.5px;
-  height: 1012.5px;
+  width: 675px;
+  height: 675px;
   transform-style: preserve-3d;
   animation: spin-geo 40s linear infinite reverse;
 }
@@ -236,22 +236,22 @@
 }
 
 .orbit-1 {
-  width: 1282.5px;
-  height: 1282.5px;
+  width: 855px;
+  height: 855px;
   transform: rotateX(70deg) rotateY(20deg);
   animation: spin-orbit-1 12s linear infinite;
 }
 
 .orbit-2 {
-  width: 1080px;
-  height: 1080px;
+  width: 720px;
+  height: 720px;
   transform: rotateX(70deg) rotateY(140deg);
   animation: spin-orbit-2 18s linear infinite reverse;
 }
 
 .orbit-3 {
-  width: 1485px;
-  height: 1485px;
+  width: 990px;
+  height: 990px;
   transform: rotateX(70deg) rotateY(260deg);
   animation: spin-orbit-3 15s linear infinite;
 }
@@ -279,29 +279,29 @@
 }
 
 .satellite-1 {
-  width: 18px;
-  height: 18px;
-  top: 50%;
-  left: -9px;
-  margin-top: -9px;
-  animation: move-sat-1 12s linear infinite, stay-facing 40s linear infinite reverse;
-}
-
-.satellite-2 {
   width: 12px;
   height: 12px;
   top: 50%;
   left: -6px;
   margin-top: -6px;
+  animation: move-sat-1 12s linear infinite, stay-facing 40s linear infinite reverse;
+}
+
+.satellite-2 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: -4px;
+  margin-top: -4px;
   animation: move-sat-2 18s linear infinite reverse, stay-facing 40s linear infinite reverse;
 }
 
 .satellite-3 {
-  width: 22.5px;
-  height: 22.5px;
+  width: 15px;
+  height: 15px;
   top: 50%;
-  left: -11.25px;
-  margin-top: -11.25px;
+  left: -7.5px;
+  margin-top: -7.5px;
   animation: move-sat-3 15s linear infinite, stay-facing 40s linear infinite reverse;
 }
 
@@ -315,14 +315,14 @@
 }
 
 @keyframes move-sat-1 {
-  from { transform: rotateZ(0deg) translateX(641.25px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(641.25px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(427.5px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(427.5px) rotateZ(360deg); }
 }
 @keyframes move-sat-2 {
-  from { transform: rotateZ(0deg) translateX(540px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(540px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(360px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(360px) rotateZ(360deg); }
 }
 @keyframes move-sat-3 {
-  from { transform: rotateZ(0deg) translateX(742.5px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(742.5px) rotateZ(360deg); }
+  from { transform: rotateZ(0deg) translateX(495px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(495px) rotateZ(360deg); }
 }
