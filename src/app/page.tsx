@@ -90,7 +90,7 @@ export default function Home() {
 
       <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3">
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 px-6">
+          <CardHeader className="py-12 px-6">
             <div className="flex items-center gap-4">
               <BookOpenText className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
@@ -103,7 +103,7 @@ export default function Home() {
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 px-6">
+          <CardHeader className="py-12 px-6">
             <div className="flex items-center gap-4">
               <Headphones className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
@@ -116,7 +116,7 @@ export default function Home() {
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10 px-6">
+          <CardHeader className="py-12 px-6">
             <div className="flex items-center gap-4">
               <FileText className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
