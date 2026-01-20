@@ -28,7 +28,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left">
             <div className="flex items-center space-x-4">
               <h1 className="font-headline text-5xl font-bold tracking-tight text-primary md:text-7xl">
-                Core Balance TOEIC
+                The Core Balance-TOEIC
               </h1>
             </div>
 
@@ -78,7 +78,7 @@ export default function Home() {
 
       <footer className="absolute bottom-4 z-10 w-full text-center text-xs text-foreground/50">
         <p>
-          &copy; {new Date().getFullYear()} Core Balance TOEIC. All Rights
+          &copy; {new Date().getFullYear()} The Core Balance-TOEIC. All Rights
           Reserved.
         </p>
       </footer>

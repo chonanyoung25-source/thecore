@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Core Balance TOEIC',
+  title: 'The Core Balance-TOEIC',
   description: 'Your personalized path to TOEIC success.',
 };
 
