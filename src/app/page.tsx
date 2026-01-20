@@ -48,13 +48,6 @@ export default function Home() {
             <div className="flex flex-col space-y-4 pt-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <Button
                 size="lg"
-                className="h-auto px-8 py-4 font-headline text-lg font-bold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-              >
-                Start Your Journey
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
                 variant="outline"
                 className="h-auto border-2 bg-background/50 px-8 py-4 font-headline text-lg font-bold backdrop-blur-sm transition-all hover:scale-105"
               >
