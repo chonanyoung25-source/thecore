@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "vocab-promo",
+      "description": "A person studying vocabulary from a book.",
+      "imageUrl": "https://images.unsplash.com/photo-1600783355700-5d2424dc013e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdHVkeWluZyUyMGJvb2t8ZW58MHx8fHwxNzY4OTAyNjk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "studying book"
+    },
+    {
+      "id": "listening-promo",
+      "description": "A person listening to audio with headphones.",
+      "imageUrl": "https://images.unsplash.com/photo-1634717037148-4dc76c09a328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmVzJTIwYXVkaW98ZW58MHx8fHwxNzY4ODkxNTYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "headphones audio"
+    },
+    {
+      "id": "reading-promo",
+      "description": "A person reading a document on a tablet.",
+      "imageUrl": "https://images.unsplash.com/photo-1731651893326-93c04ae0c4b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2ODg4OTkzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "reading tablet"
+    }
+  ]
 }
