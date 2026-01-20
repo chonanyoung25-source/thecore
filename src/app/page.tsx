@@ -41,15 +41,23 @@ export default function Home() {
                   href="#philosophy"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
-                  Philosophy
+                  Vocabulary
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#next-gen"
+                  href="#philosophy"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
-                  Technology
+                  Listening
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#philosophy"
+                  className="font-headline text-foreground/80 transition-colors hover:text-foreground"
+                >
+                  Reading
                 </Link>
               </li>
             </ul>
