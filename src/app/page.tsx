@@ -44,16 +44,6 @@ export default function Home() {
                 지금 바로 실천해보세요.
               </span>
             </p>
-
-            <div className="flex flex-col space-y-4 pt-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-auto border-2 bg-background/50 px-8 py-4 font-headline text-lg font-bold backdrop-blur-sm transition-all hover:scale-105"
-              >
-                Explore Features
-              </Button>
-            </div>
           </div>
           <div className="hidden md:flex justify-center items-center">
             <CoreVisualization />
