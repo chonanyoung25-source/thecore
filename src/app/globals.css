@@ -111,88 +111,177 @@
 
 .visualization-container {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   transform-style: preserve-3d;
-  animation: spin-all 30s linear infinite;
+  animation: spin-all 40s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes spin-all {
   from {
-    transform: rotate3d(0.5, 1, 0.2, 0deg);
+    transform: rotateY(0deg) rotateX(10deg);
   }
   to {
-    transform: rotate3d(0.5, 1, 0.2, 360deg);
+    transform: rotateY(360deg) rotateX(10deg);
   }
 }
 
 .core-sphere {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  top: calc(50% - 75px);
-  left: calc(50% - 75px);
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, hsl(var(--primary)), hsl(231 48% 30%));
-  box-shadow: 0 0 60px hsl(var(--primary)/0.7), inset 0 0 30px hsl(var(--accent)/0.5);
+  background: radial-gradient(circle at 35% 35%, hsl(var(--primary)), hsl(231 48% 25%));
+  box-shadow: inset 0 0 40px hsl(231 48% 20%), 0 0 60px -20px hsl(var(--primary));
   transform-style: preserve-3d;
 }
 
-.orbit {
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--accent-foreground) / 0.8);
+  box-shadow: 0 0 8px hsl(var(--accent-foreground) / 0.6);
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.geo-sphere {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: spin-geo 25s linear infinite reverse;
+}
+
+@keyframes spin-geo {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+.geo-ring {
   position: absolute;
   width: 100%;
   height: 100%;
+  border: 1px solid hsl(var(--accent) / 0.2);
+  border-radius: 50%;
+}
+
+.orbit-path {
+  position: absolute;
+  width: 380px;
+  height: 380px;
   border: 1px solid hsl(var(--accent) / 0.3);
   border-radius: 50%;
   transform-style: preserve-3d;
 }
 
 .orbit-1 {
-  transform: rotateX(70deg);
+  width: 380px;
+  height: 380px;
+  transform: rotateX(70deg) rotateY(20deg);
+  animation: spin-orbit-1 12s linear infinite;
 }
+
 .orbit-2 {
-  transform: rotateX(70deg) rotateY(120deg);
+  width: 320px;
+  height: 320px;
+  transform: rotateX(70deg) rotateY(140deg);
+  animation: spin-orbit-2 18s linear infinite reverse;
 }
+
 .orbit-3 {
-  transform: rotateX(70deg) rotateY(240deg);
+  width: 440px;
+  height: 440px;
+  transform: rotateX(70deg) rotateY(260deg);
+  animation: spin-orbit-3 15s linear infinite;
 }
+
+@keyframes spin-orbit-1 {
+  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(20deg); }
+  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(20deg); }
+}
+@keyframes spin-orbit-2 {
+  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(140deg); }
+  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(140deg); }
+}
+@keyframes spin-orbit-3 {
+  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(260deg); }
+  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(260deg); }
+}
+
 
 .satellite {
   position: absolute;
   border-radius: 50%;
-  background: hsl(var(--accent));
-  box-shadow: 0 0 10px hsl(var(--accent));
-  animation: stay-facing 30s linear infinite reverse;
+  background: hsl(var(--accent-foreground));
+  box-shadow: 0 0 10px hsl(var(--accent-foreground) / 0.8);
+  animation: stay-facing 40s linear infinite reverse;
+}
+
+.satellite-1 {
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  left: -6px;
+  margin-top: -6px;
+  animation: move-sat-1 12s linear infinite, stay-facing 40s linear infinite reverse;
+}
+
+.satellite-2 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: -4px;
+  margin-top: -4px;
+  animation: move-sat-2 18s linear infinite reverse, stay-facing 40s linear infinite reverse;
+}
+
+.satellite-3 {
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: -7.5px;
+  margin-top: -7.5px;
+  animation: move-sat-3 15s linear infinite, stay-facing 40s linear infinite reverse;
 }
 
 @keyframes stay-facing {
   from {
-    transform: rotate3d(-0.5, -1, -0.2, 0deg);
+    transform: rotateY(360deg) rotateX(10deg);
   }
   to {
-    transform: rotate3d(-0.5, -1, -0.2, 360deg);
+    transform: rotateY(0deg) rotateX(10deg);
   }
 }
 
-.satellite-1 {
-  width: 35px;
-  height: 35px;
-  background: hsl(var(--primary));
-  box-shadow: 0 0 15px hsl(var(--primary));
-  top: calc(50% - 17.5px);
-  left: -17.5px;
+@keyframes move-sat-1 {
+  from { transform: rotateZ(0deg) translateX(190px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(190px) rotateZ(360deg); }
 }
-
-.satellite-2 {
-  width: 25px;
-  height: 25px;
-  top: calc(50% - 12.5px);
-  right: -12.5px;
+@keyframes move-sat-2 {
+  from { transform: rotateZ(0deg) translateX(160px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(160px) rotateZ(360deg); }
 }
-
-.satellite-3 {
-  width: 20px;
-  height: 20px;
-  bottom: -10px;
-  left: calc(50% - 10px);
+@keyframes move-sat-3 {
+  from { transform: rotateZ(0deg) translateX(220px) rotateZ(0deg); }
+  to { transform: rotateZ(-360deg) translateX(220px) rotateZ(360deg); }
 }
