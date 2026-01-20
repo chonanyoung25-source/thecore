@@ -155,7 +155,7 @@
   height: 180px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, hsl(var(--primary)), hsl(var(--accent)));
-  animation: counter-spin-all 40s linear infinite, pulse-glow 4s ease-in-out infinite;
+  animation: pulse-glow 4s ease-in-out infinite, counter-spin-all 40s linear infinite;
 }
 
 .core-ring {
