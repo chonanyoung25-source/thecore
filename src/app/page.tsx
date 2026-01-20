@@ -37,7 +37,9 @@ export default function Home() {
               <span className="font-bold text-foreground">
                 Vocabulary, Listening, and Reading
               </span>{' '}
-              세 가지 Balance에 있습니다. 흔들리지 않는 실력의 시작, 지금 바로 실천해보세요.
+              세 가지{' '}
+              <span className="font-bold text-foreground">Balance</span>
+              에 있습니다. 흔들리지 않는 실력의 시작, 지금 바로 실천해보세요.
             </p>
 
             <div className="flex flex-col space-y-4 pt-4 sm:flex-row sm:space-y-0 sm:space-x-4">
