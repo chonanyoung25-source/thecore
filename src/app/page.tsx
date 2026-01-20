@@ -56,7 +56,7 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-7xl px-4">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left -mt-16">
+          <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left -mt-32">
             <div className="flex items-center space-x-4">
               <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl animated-gradient-text">
                 The Core Balance-TOEIC
