@@ -1,14 +1,16 @@
 import { z } from 'zod';
 
 export const VocabularyQuizOutputSchema = z.object({
-  sentence: z
-    .string()
-    .describe('A sentence with a blank (_____) where a word is missing.'),
-  options: z.array(z.string()).describe('An array of 4 word options.'),
-  answer: z.string().describe('The correct word that fills the blank.'),
+  word: z.string().describe('The vocabulary word to be tested.'),
+  options: z
+    .array(z.string())
+    .describe('An array of 4 definitions, one of which is correct.'),
+  answer: z.string().describe('The correct definition for the word.'),
   explanation: z
     .string()
-    .describe('A brief explanation of why the answer is correct.'),
+    .describe(
+      'A brief explanation of why the answer is correct, including an example sentence.'
+    ),
 });
 
 export type VocabularyQuizOutput = z.infer<typeof VocabularyQuizOutputSchema>;

@@ -3,7 +3,13 @@
 import { generateVocabularyQuiz } from '@/ai/flows/generate-vocabulary-quiz';
 import { VocabularyQuizOutput } from '@/ai/schemas/vocabulary-quiz';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, LoaderCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -43,8 +49,6 @@ export default function VocabularyQuizPage() {
 
   const isCorrect = quiz && selectedAnswer === quiz.answer;
 
-  const sentenceParts = quiz?.sentence.split('_____');
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-background text-foreground p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-2xl">
@@ -59,42 +63,49 @@ export default function VocabularyQuizPage() {
         <Card className="shadow-2xl">
           <CardHeader>
             <CardTitle>Vocabulary Quiz</CardTitle>
-            <CardDescription>Choose the word that best fits the sentence.</CardDescription>
+            <CardDescription>
+              Choose the definition that best fits the word.
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {loading && (
               <div className="flex min-h-[300px] flex-col items-center justify-center space-y-4">
                 <LoaderCircle className="h-10 w-10 animate-spin text-primary" />
-                <p className="text-muted-foreground">Generating a new question...</p>
+                <p className="text-muted-foreground">
+                  Generating a new question...
+                </p>
               </div>
             )}
             {quiz && !loading && (
               <div className="space-y-4">
-                {sentenceParts && (
-                  <p className="text-lg text-center font-serif text-foreground/90 py-8">
-                    {sentenceParts[0]}
-                    <span className="font-bold text-xl text-primary underline decoration-dotted underline-offset-4 mx-2">
-                      __________
-                    </span>
-                    {sentenceParts[1]}
+                <div className="text-center py-8 bg-muted/20 rounded-lg">
+                  <p className="text-sm text-muted-foreground">
+                    What is the meaning of this word?
                   </p>
-                )}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <h2 className="text-4xl font-bold text-primary tracking-tight">
+                    {quiz.word}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 gap-4">
                   {quiz.options.map((option) => (
                     <Button
                       key={option}
                       variant={
                         answered && option === quiz.answer
                           ? 'default'
-                          : answered && option === selectedAnswer && option !== quiz.answer
+                          : answered &&
+                            option === selectedAnswer &&
+                            option !== quiz.answer
                           ? 'destructive'
                           : 'outline'
                       }
                       className={cn(
-                        'h-auto justify-start p-4 text-left transition-all',
+                        'h-auto justify-start p-4 text-left transition-all leading-normal',
                         {
                           'opacity-60':
-                            answered && option !== quiz.answer && option !== selectedAnswer,
+                            answered &&
+                            option !== quiz.answer &&
+                            option !== selectedAnswer,
                         }
                       )}
                       onClick={() => handleAnswer(option)}
@@ -118,12 +129,26 @@ export default function VocabularyQuizPage() {
                         isCorrect ? 'text-primary' : 'text-destructive'
                       )}
                     >
-                      {isCorrect ? 'Correct!' : `Incorrect. The correct answer is "${quiz.answer}".`}
+                      {isCorrect ? 'Correct!' : `Incorrect.`}
                     </h4>
-                    <p className="mt-2 text-sm text-muted-foreground">{quiz.explanation}</p>
+                    {!isCorrect && (
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        The correct answer is:{' '}
+                        <span className="font-semibold text-foreground">
+                          {quiz.answer}
+                        </span>
+                      </p>
+                    )}
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {quiz.explanation}
+                    </p>
                   </div>
                 )}
-                <Button onClick={fetchQuiz} className="w-full" disabled={loading}>
+                <Button
+                  onClick={fetchQuiz}
+                  className="w-full"
+                  disabled={loading}
+                >
                   {loading ? (
                     <>
                       <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
