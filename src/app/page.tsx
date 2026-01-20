@@ -146,99 +146,102 @@ export default function Home() {
         </footer>
       </section>
 
-      <div className="w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 space-y-32">
-        {vocabImage && (
-          <section
-            id="vocabulary"
-            className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-          >
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-              <Image
-                src={vocabImage.imageUrl}
-                alt={vocabImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={vocabImage.imageHint}
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                Unlock a World of Words
-              </h2>
-              <p className="text-lg text-foreground/80">
-                Build a powerful vocabulary foundation. Our tools help you learn
-                and retain TOEIC-specific words efficiently, boosting your score
-                across all sections.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="#">Start Learning Vocabulary</Link>
-              </Button>
-            </div>
-          </section>
-        )}
+      <div className="w-full bg-white">
+        <div className="mx-auto w-full max-w-7xl space-y-32 px-4 py-24 sm:px-6 lg:px-8">
+          {vocabImage && (
+            <section
+              id="vocabulary"
+              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
+            >
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
+                <Image
+                  src={vocabImage.imageUrl}
+                  alt={vocabImage.description}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={vocabImage.imageHint}
+                />
+              </div>
+              <div className="space-y-6">
+                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                  Unlock a World of Words
+                </h2>
+                <p className="text-lg text-gray-700">
+                  Build a powerful vocabulary foundation. Our tools help you learn
+                  and retain TOEIC-specific words efficiently, boosting your score
+                  across all sections.
+                </p>
+                <Button size="lg" asChild>
+                  <Link href="#">Start Learning Vocabulary</Link>
+                </Button>
+              </div>
+            </section>
+          )}
 
-        {listeningImage && (
-          <section
-            id="listening"
-            className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-          >
-            <div className="space-y-6 md:order-last">
-              <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                Sharpen Your Listening Comprehension
-              </h2>
-              <p className="text-lg text-foreground/80">
-                From short talks to full conversations, train your ear to catch
-                every detail. Practice with a wide range of accents and
-                real-world scenarios.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="#">Practice Listening</Link>
-              </Button>
-            </div>
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-              <Image
-                src={listeningImage.imageUrl}
-                alt={listeningImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={listeningImage.imageHint}
-              />
-            </div>
-          </section>
-        )}
+          {listeningImage && (
+            <section
+              id="listening"
+              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
+            >
+              <div className="space-y-6 md:order-last">
+                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                  Sharpen Your Listening Comprehension
+                </h2>
+                <p className="text-lg text-gray-700">
+                  From short talks to full conversations, train your ear to catch
+                  every detail. Practice with a wide range of accents and
+                  real-world scenarios.
+                </p>
+                <Button size="lg" asChild>
+                  <Link href="#">Practice Listening</Link>
+                </Button>
+              </div>
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
+                <Image
+                  src={listeningImage.imageUrl}
+                  alt={listeningImage.description}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={listeningImage.imageHint}
+                />
+              </div>
+            </section>
+          )}
 
-        {readingImage && (
-          <section
-            id="reading"
-            className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-          >
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-              <Image
-                src={readingImage.imageUrl}
-                alt={readingImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={readingImage.imageHint}
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                Read with Confidence and Speed
-              </h2>
-              <p className="text-lg text-foreground/80">
-                Tackle any passage, from emails to articles. Improve your
-                reading speed and comprehension skills to ace the reading
-                section.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="#">Start Reading</Link>
-              </Button>
-            </div>
-          </section>
-        )}
+          {readingImage && (
+            <section
+              id="reading"
+              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
+            >
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
+                <Image
+                  src={readingImage.imageUrl}
+                  alt={readingImage.description}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={readingImage.imageHint}
+                />
+              </div>
+              <div className="space-y-6">
+                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                  Read with Confidence and Speed
+                </h2>
+                <p className="text-lg text-gray-700">
+                  Tackle any passage, from emails to articles. Improve your
+                  reading speed and comprehension skills to ace the reading
+                  section.
+                </p>
+                <Button size="lg" asChild>
+                  <Link href="#">Start Reading</Link>
+                </Button>
+              </div>
+            </section>
+          )}
+        </div>
       </div>
 
-      <footer className="w-full border-t border-border py-8 text-center text-sm text-foreground/60">
+
+      <footer className="w-full border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
         <p>
           &copy; {new Date().getFullYear()} The Core Balance-TOEIC. All Rights
           Reserved.
