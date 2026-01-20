@@ -4,23 +4,13 @@
  * @fileOverview Generates a random TOEIC vocabulary quiz.
  *
  * - generateVocabularyQuiz - A function that generates the quiz.
- * - VocabularyQuizOutput - The return type for the generateVocabularyQuiz function.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
-
-export const VocabularyQuizOutputSchema = z.object({
-  sentence: z
-    .string()
-    .describe('A sentence with a blank (_____) where a word is missing.'),
-  options: z.array(z.string()).describe('An array of 4 word options.'),
-  answer: z.string().describe('The correct word that fills the blank.'),
-  explanation: z
-    .string()
-    .describe('A brief explanation of why the answer is correct.'),
-});
-export type VocabularyQuizOutput = z.infer<typeof VocabularyQuizOutputSchema>;
+import {
+  VocabularyQuizOutput,
+  VocabularyQuizOutputSchema,
+} from '@/ai/schemas/vocabulary-quiz';
 
 export async function generateVocabularyQuiz(): Promise<VocabularyQuizOutput> {
   return generateVocabularyQuizFlow();

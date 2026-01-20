@@ -1,6 +1,7 @@
 'use client';
 
-import { generateVocabularyQuiz, VocabularyQuizOutput } from '@/ai/flows/generate-vocabulary-quiz';
+import { generateVocabularyQuiz } from '@/ai/flows/generate-vocabulary-quiz';
+import { VocabularyQuizOutput } from '@/ai/schemas/vocabulary-quiz';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
