@@ -8,7 +8,12 @@ export default function Home() {
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-background text-foreground">
       <DynamicBackground />
 
-      <header className="absolute top-0 right-0 z-20 p-8">
+      <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-8">
+        <div>
+          <p className="font-headline text-lg font-bold text-foreground">
+            Cho Nanyoung
+          </p>
+        </div>
         <nav>
           <ul className="flex items-center space-x-8">
             <li>
