@@ -2,6 +2,7 @@ import DynamicBackground from '@/components/dynamic-background';
 import CoreVisualization from '@/components/core-visualization';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import { BookOpenText, Headphones, FileText } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -56,7 +57,7 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-7xl px-4">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left -mt-40">
+          <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left -mt-60">
             <div className="flex items-center space-x-4">
               <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl animated-gradient-text">
                 The Core Balance-TOEIC
@@ -84,21 +85,24 @@ export default function Home() {
 
       <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3">
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10">
+          <CardHeader className="py-10 flex flex-col items-center justify-center">
+            <BookOpenText className="w-12 h-12 mb-4 text-foreground" />
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Vocabulary
             </CardTitle>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10">
+          <CardHeader className="py-10 flex flex-col items-center justify-center">
+            <Headphones className="w-12 h-12 mb-4 text-foreground" />
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Listening
             </CardTitle>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-          <CardHeader className="py-10">
+          <CardHeader className="py-10 flex flex-col items-center justify-center">
+            <FileText className="w-12 h-12 mb-4 text-foreground" />
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Reading
             </CardTitle>
