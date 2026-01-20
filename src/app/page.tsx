@@ -40,7 +40,7 @@ export default function Home() {
               세 가지{' '}
               <span className="font-bold text-foreground">Balance</span>
               에 있습니다. 흔들리지 않는 실력의 시작,{' '}
-              <span className="font-bold text-foreground">
+              <span className="font-bold text-foreground underline decoration-accent underline-offset-4">
                 지금 바로 실천해보세요.
               </span>
             </p>
