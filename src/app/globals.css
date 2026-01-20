@@ -154,7 +154,7 @@
   width: 270px;
   height: 270px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, hsl(var(--primary)), hsl(var(--accent)));
+  background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.8), hsl(var(--accent) / 0.8));
   animation: pulse-glow 4s ease-in-out infinite, counter-spin-all 40s linear infinite;
 }
 
