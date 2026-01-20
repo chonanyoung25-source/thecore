@@ -16,7 +16,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center bg-background text-foreground">
       <section
         id="main"
-        className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden scroll-mt-20"
+        className="relative flex w-full flex-col items-center justify-center overflow-hidden scroll-mt-20 min-h-screen py-20"
       >
         <DynamicBackground />
 
@@ -58,7 +58,7 @@ export default function Home() {
 
         <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-background/80 to-background" />
 
-        <div className="z-10 w-full max-w-7xl px-4">
+        <div className="z-10 w-full max-w-7xl px-4 mt-20">
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left">
               <div className="flex items-center space-x-4">
@@ -82,6 +82,30 @@ export default function Home() {
             </div>
             <div className="hidden md:flex justify-center items-center">
               <CoreVisualization />
+            </div>
+          </div>
+          
+          <div className="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6 backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                    <BookOpenText className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Vocabulary</h3>
+                </div>
+                <p className="mt-4 text-foreground/80">문맥으로 이해하는 지능형 어휘 학습</p>
+            </div>
+             <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6 backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                    <Headphones className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Listening</h3>
+                </div>
+                <p className="mt-4 text-foreground/80">실전 감각을 키우는 정밀 청취 훈련</p>
+            </div>
+             <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6 backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                    <FileText className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Reading</h3>
+                </div>
+                <p className="mt-4 text-foreground/80">속도와 정확도를 높이는 독해 분석</p>
             </div>
           </div>
         </div>
