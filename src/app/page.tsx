@@ -38,7 +38,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  href="#philosophy"
+                  href="/vocabulary"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
                   Vocabulary
@@ -94,7 +94,7 @@ export default function Home() {
           </div>
           
           <div className="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <Link href="/vocabulary-quiz" className="block h-full">
+            <Link href="/vocabulary" className="block h-full">
               <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-10 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
                   <div className="flex items-center gap-4">
                       <BookOpenText className="h-6 w-6 text-primary" />
