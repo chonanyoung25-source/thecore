@@ -92,7 +92,7 @@ export default function Home() {
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
           <CardHeader className="py-10 px-6">
             <div className="flex items-center gap-4">
-              <BookOpenText className="w-12 h-12 text-foreground" />
+              <BookOpenText className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
                 Vocabulary
               </CardTitle>
@@ -105,7 +105,7 @@ export default function Home() {
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
           <CardHeader className="py-10 px-6">
             <div className="flex items-center gap-4">
-              <Headphones className="w-12 h-12 text-foreground" />
+              <Headphones className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
                 Listening
               </CardTitle>
@@ -118,7 +118,7 @@ export default function Home() {
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
           <CardHeader className="py-10 px-6">
             <div className="flex items-center gap-4">
-              <FileText className="w-12 h-12 text-foreground" />
+              <FileText className="w-8 h-8 text-foreground" />
               <CardTitle className="text-xl font-semibold text-foreground">
                 Reading
               </CardTitle>
