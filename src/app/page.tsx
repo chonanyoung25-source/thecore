@@ -1,6 +1,11 @@
 import DynamicBackground from '@/components/dynamic-background';
 import CoreVisualization from '@/components/core-visualization';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
 import Link from 'next/link';
 import { BookOpenText, Headphones, FileText } from 'lucide-react';
 
@@ -90,6 +95,9 @@ export default function Home() {
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Vocabulary
             </CardTitle>
+            <CardDescription className="text-center text-foreground/80 mt-2">
+              Expand your word power.
+            </CardDescription>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
@@ -98,6 +106,9 @@ export default function Home() {
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Listening
             </CardTitle>
+            <CardDescription className="text-center text-foreground/80 mt-2">
+              Sharpen your listening skills.
+            </CardDescription>
           </CardHeader>
         </Card>
         <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
@@ -106,6 +117,9 @@ export default function Home() {
             <CardTitle className="text-center text-xl font-semibold text-foreground">
               Reading
             </CardTitle>
+            <CardDescription className="text-center text-foreground/80 mt-2">
+              Improve your reading comprehension.
+            </CardDescription>
           </CardHeader>
         </Card>
       </div>
