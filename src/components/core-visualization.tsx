@@ -17,7 +17,7 @@ const CoreVisualization = () => {
     const generatedParticles = Array.from({ length: numParticles }).map((_, i) => {
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos(2 * Math.random() - 1);
-      const radius = 145; // slightly less than geo-sphere radius
+      const radius = 220; // slightly less than geo-sphere radius
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
       const z = radius * Math.cos(phi);
