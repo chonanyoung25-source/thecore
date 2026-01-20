@@ -1,25 +1,23 @@
 import DynamicBackground from '@/components/dynamic-background';
 import CoreVisualization from '@/components/core-visualization';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from '@/components/ui/card';
 import Link from 'next/link';
-import { BookOpenText, Headphones, FileText } from 'lucide-react';
-import Image from 'next/image';
+import {
+  BookOpenText,
+  Headphones,
+  FileText,
+  Zap,
+  Target,
+  BarChart2,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
-  const vocabImage = PlaceHolderImages.find(p => p.id === 'vocab-promo');
-  const listeningImage = PlaceHolderImages.find(p => p.id === 'listening-promo');
-  const readingImage = PlaceHolderImages.find(p => p.id === 'reading-promo');
-
   return (
     <main className="flex min-h-screen flex-col items-center bg-background text-foreground">
-      <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
+      <section
+        id="main"
+        className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden scroll-mt-20"
+      >
         <DynamicBackground />
 
         <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-8">
@@ -32,7 +30,7 @@ export default function Home() {
             <ul className="flex items-center space-x-8">
               <li>
                 <Link
-                  href="#"
+                  href="#main"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
                   Main
@@ -40,26 +38,18 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  href="#vocabulary"
+                  href="#philosophy"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
-                  Vocabulary
+                  Philosophy
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#listening"
+                  href="#next-gen"
                   className="font-headline text-foreground/80 transition-colors hover:text-foreground"
                 >
-                  Listening
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#reading"
-                  className="font-headline text-foreground/80 transition-colors hover:text-foreground"
-                >
-                  Reading
+                  Technology
                 </Link>
               </li>
             </ul>
@@ -70,7 +60,7 @@ export default function Home() {
 
         <div className="z-10 w-full max-w-7xl px-4">
           <div className="grid items-center gap-8 md:grid-cols-2">
-            <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left -mt-24">
+            <div className="flex flex-col items-center space-y-8 text-center md:items-start md:text-left">
               <div className="flex items-center space-x-4">
                 <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl animated-gradient-text">
                   The Core Balance-TOEIC
@@ -95,151 +85,122 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-16 z-10 grid w-full max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3">
-          <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-            <CardHeader className="py-12 px-6">
-              <div className="flex items-center gap-4">
-                <BookOpenText className="w-8 h-8 text-foreground" />
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  Vocabulary
-                </CardTitle>
-              </div>
-              <CardDescription className="text-foreground/80 mt-2">
-                Expand your word power.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-            <CardHeader className="py-12 px-6">
-              <div className="flex items-center gap-4">
-                <Headphones className="w-8 h-8 text-foreground" />
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  Listening
-                </CardTitle>
-              </div>
-              <CardDescription className="text-foreground/80 mt-2">
-                Sharpen your listening skills.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="border-accent/30 bg-accent/20 backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-            <CardHeader className="py-12 px-6">
-              <div className="flex items-center gap-4">
-                <FileText className="w-8 h-8 text-foreground" />
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  Reading
-                </CardTitle>
-              </div>
-              <CardDescription className="text-foreground/80 mt-2">
-                Improve your reading comprehension.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </div>
-
-        <footer className="absolute bottom-4 z-10 w-full text-center text-xs text-foreground/50">
-          <p>
-            &copy; {new Date().getFullYear()} The Core Balance-TOEIC. All
-            Rights Reserved.
-          </p>
-        </footer>
       </section>
 
-      <div className="w-full bg-white">
-        <div className="mx-auto w-full max-w-7xl space-y-32 px-4 py-24 sm:px-6 lg:px-8">
-          {vocabImage && (
-            <section
-              id="vocabulary"
-              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-            >
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-                <Image
-                  src={vocabImage.imageUrl}
-                  alt={vocabImage.description}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={vocabImage.imageHint}
-                />
-              </div>
-              <div className="space-y-6">
-                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                  Unlock a World of Words
-                </h2>
-                <p className="text-lg text-gray-700">
-                  Build a powerful vocabulary foundation. Our tools help you learn
-                  and retain TOEIC-specific words efficiently, boosting your score
-                  across all sections.
-                </p>
-                <Button size="lg" asChild>
-                  <Link href="#">Start Learning Vocabulary</Link>
-                </Button>
-              </div>
-            </section>
-          )}
+      <div className="w-full bg-white text-slate-800">
+        <div className="mx-auto max-w-6xl space-y-32 px-4 py-24 sm:px-6 lg:px-8">
+          <section
+            id="philosophy"
+            className="flex flex-col items-center text-center scroll-mt-20"
+          >
+            <p className="font-semibold text-primary">THE PHILOSOPHY</p>
+            <h2 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              균형 잡힌 데이터가
+              <br />
+              당신의 점수를 결정합니다.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              단순한 문제 풀이를 넘어, 토익의 3가지 핵심 축인 어휘력, 청취력,
+              독해력의 완벽한 밸런스를 측정합니다. The Core Balance-Toeic은
+              당신의 취약점을 정밀 분석하여 가장 빠른 목표 달성 경로를
+              제시합니다.
+            </p>
 
-          {listeningImage && (
-            <section
-              id="listening"
-              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-            >
-              <div className="space-y-6 md:order-last">
-                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                  Sharpen Your Listening Comprehension
-                </h2>
-                <p className="text-lg text-gray-700">
-                  From short talks to full conversations, train your ear to catch
-                  every detail. Practice with a wide range of accents and
-                  real-world scenarios.
+            <div className="mt-20 grid w-full max-w-none grid-cols-1 gap-8 md:grid-cols-3">
+              <div className="rounded-2xl bg-slate-100/80 p-8 text-left">
+                <BookOpenText className="h-8 w-8 text-primary" />
+                <h3 className="mt-6 text-xl font-bold text-slate-900">
+                  Vocabulary Engine
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  단순 암기가 아닌 문맥 속 의미를 파악하는 지능형 어휘 학습
+                  시스템. 빈출 순위와 오답들을 기반으로 개인 맞춤형 단어장을
+                  생성합니다.
                 </p>
-                <Button size="lg" asChild>
-                  <Link href="#">Practice Listening</Link>
-                </Button>
               </div>
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-                <Image
-                  src={listeningImage.imageUrl}
-                  alt={listeningImage.description}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={listeningImage.imageHint}
-                />
-              </div>
-            </section>
-          )}
 
-          {readingImage && (
-            <section
-              id="reading"
-              className="grid items-center gap-12 md:grid-cols-2 lg:gap-24 scroll-mt-20"
-            >
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-                <Image
-                  src={readingImage.imageUrl}
-                  alt={readingImage.description}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={readingImage.imageHint}
-                />
-              </div>
-              <div className="space-y-6">
-                <h2 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-                  Read with Confidence and Speed
-                </h2>
-                <p className="text-lg text-gray-700">
-                  Tackle any passage, from emails to articles. Improve your
-                  reading speed and comprehension skills to ace the reading
-                  section.
+              <div className="rounded-2xl bg-slate-100/80 p-8 text-left">
+                <Headphones className="h-8 w-8 text-primary" />
+                <h3 className="mt-6 text-xl font-bold text-slate-900">
+                  Listening Precision
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  국가별 억양과 소음이 섞인 실제 시험 환경을 완벽 구현. 파트별
+                  핵심 키워드를 잡아내는 청취 훈련 모듈을 제공합니다.
                 </p>
-                <Button size="lg" asChild>
-                  <Link href="#">Start Reading</Link>
-                </Button>
               </div>
-            </section>
-          )}
+
+              <div className="rounded-2xl bg-slate-100/80 p-8 text-left">
+                <FileText className="h-8 w-8 text-primary" />
+                <h3 className="mt-6 text-xl font-bold text-slate-900">
+                  Reading Analytics
+                </h3>
+                <p className="mt-2 text-slate-600">
+                  장문 독해의 속도와 정확도를 동시에 향상시킵니다. 문장 구조
+                  분석 엔진을 통해 복잡한 비즈니스 문서를 빠르게 독해하는 능력을
+                  키워줍니다.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="next-gen"
+            className="grid items-center gap-16 md:grid-cols-2 lg:gap-24 scroll-mt-20"
+          >
+            <div className="grid grid-cols-2 gap-6">
+              <div className="col-span-1 flex flex-col items-center justify-center rounded-2xl bg-slate-900 p-8 text-center text-white shadow-2xl">
+                <Zap className="h-10 w-10 text-yellow-400" />
+                <p className="mt-4 text-5xl font-bold">98%</p>
+                <p className="mt-1 text-sm font-medium uppercase tracking-wider text-slate-400">
+                  EFFICIENCY
+                </p>
+              </div>
+              <div className="col-span-1 flex flex-col items-center justify-center rounded-2xl bg-slate-100/80 p-8 text-center shadow-lg">
+                <Target className="h-10 w-10 text-primary" />
+                <p className="mt-4 text-2xl font-bold text-slate-900">
+                  Target
+                </p>
+                <p className="mt-1 text-sm font-medium uppercase tracking-wider text-slate-500">
+                  PRECISION
+                </p>
+              </div>
+              <div className="col-span-2 flex items-center gap-6 rounded-2xl bg-slate-100/80 p-8 text-left shadow-lg">
+                <BarChart2 className="h-10 w-10 flex-shrink-0 text-primary" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">
+                    Smart Analytics
+                  </h3>
+                  <p className="mt-1 text-slate-600">
+                    실시간 데이터 트래킹으로 매일 성장하는 실력을 확인하세요.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <p className="font-semibold text-primary">NEXT-GEN TECHNOLOGY</p>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                성장을 위한
+                <br />
+                스마트한 데이터 분석
+              </h2>
+              <p className="text-lg text-slate-600">
+                The Core Balance는 단순한 학습 툴이 아닙니다. 매일 업데이트되는
+                방대한 토익 데이터를 분석하여 최신 출제 경향을 반영하고,
+                사용자의 패턴을 학습하여 최적의 오답 노트를 자동 생성합니다.
+              </p>
+              <Button
+                size="lg"
+                className="bg-slate-900 text-white hover:bg-slate-800"
+                asChild
+              >
+                <Link href="#">지금 시작하기</Link>
+              </Button>
+            </div>
+          </section>
         </div>
       </div>
-
 
       <footer className="w-full border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
         <p>
