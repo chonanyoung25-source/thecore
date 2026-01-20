@@ -252,8 +252,8 @@
 .satellite {
   position: absolute;
   border-radius: 50%;
-  background: hsl(var(--accent-foreground));
-  box-shadow: 0 0 10px hsl(var(--accent-foreground) / 0.8);
+  background: hsl(var(--accent));
+  box-shadow: 0 0 10px hsl(var(--accent) / 0.8);
   animation: stay-facing 40s linear infinite reverse;
 }
 
