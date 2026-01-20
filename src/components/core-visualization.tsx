@@ -4,7 +4,12 @@ const CoreVisualization = () => {
   return (
     <div className="visualization-container">
       <div className="core-sphere">
-         {/* Particles for sparkle effect */}
+        {/* Inner rings for 3D effect */}
+        <div className="core-ring" style={{ transform: 'rotateY(20deg) rotateX(70deg)' }}></div>
+        <div className="core-ring" style={{ transform: 'rotateY(50deg) rotateX(40deg)' }}></div>
+        <div className="core-ring" style={{ transform: 'rotateY(80deg) rotateX(10deg)' }}></div>
+
+        {/* Particles for sparkle effect */}
         <div className="particle" style={{ top: '25%', left: '40%', animationDelay: '0s' }} />
         <div className="particle" style={{ top: '50%', left: '75%', animationDelay: '-1s' }} />
         <div className="particle" style={{ top: '75%', left: '30%', animationDelay: '-2s' }} />
