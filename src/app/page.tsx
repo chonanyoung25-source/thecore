@@ -87,7 +87,7 @@ export default function Home() {
           
           <div className="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3">
             <Link href="/vocabulary-quiz" className="block h-full">
-              <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
+              <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-10 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
                   <div className="flex items-center gap-4">
                       <BookOpenText className="h-6 w-6 text-primary" />
                       <h3 className="text-lg font-semibold text-foreground">Vocabulary</h3>
@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             </Link>
             <Link href="#" className="block h-full">
-              <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
+              <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-10 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
                   <div className="flex items-center gap-4">
                       <Headphones className="h-6 w-6 text-primary" />
                       <h3 className="text-lg font-semibold text-foreground">Listening</h3>
@@ -105,7 +105,7 @@ export default function Home() {
               </div>
             </Link>
             <Link href="#" className="block h-full">
-             <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
+             <div className="h-full rounded-2xl border border-primary/20 bg-primary/10 p-10 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/20">
                   <div className="flex items-center gap-4">
                       <FileText className="h-6 w-6 text-primary" />
                       <h3 className="text-lg font-semibold text-foreground">Reading</h3>
