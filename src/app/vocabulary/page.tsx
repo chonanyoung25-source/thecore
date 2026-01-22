@@ -86,7 +86,7 @@ export default function VocabularyPage() {
                 </Button>
               </div>
             </div>
-            <div className="hidden md:flex justify-center items-center w-full h-full">
+            <div className="hidden md:flex justify-end items-center w-full h-full">
               <SwirlVisualization />
             </div>
         </section>

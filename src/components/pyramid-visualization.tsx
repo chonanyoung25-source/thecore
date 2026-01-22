@@ -94,7 +94,7 @@ const SwirlVisualization = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center w-full h-full opacity-70">
+    <div className="w-[500px] h-[500px] opacity-70">
       <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
