@@ -7,14 +7,10 @@ import {
   PlayCircle,
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import DynamicBackground from '@/components/dynamic-background';
-import CoreVisualization from '@/components/core-visualization';
+import GeodesicVisualization from '@/components/geodesic-visualization';
 
 export default function VocabularyPage() {
-  const vocabImage = PlaceHolderImages.find(img => img.id === 'vocab-promo');
-
   return (
     <main className="min-h-screen bg-black text-foreground">
       <DynamicBackground />
@@ -32,22 +28,22 @@ export default function VocabularyPage() {
             <ul className="flex items-center space-x-8">
                <li>
                 <Link href="#" className="font-headline text-sm text-foreground/80 transition-colors hover:text-foreground">
-                  WORD LIST
+                  Core Learning
                 </Link>
               </li>
               <li>
                 <Link href="#" className="font-headline text-sm text-foreground/80 transition-colors hover:text-foreground">
-                  DAILY QUIZ
+                  Testing & Review
                 </Link>
               </li>
               <li>
                 <Link href="#" className="font-headline text-sm text-foreground/80 transition-colors hover:text-foreground">
-                  MY PROGRESS
+                  Personalization
                 </Link>
               </li>
               <li>
                 <Link href="#" className="font-headline text-sm text-foreground/80 transition-colors hover:text-foreground">
-                  RESOURCES
+                  Motivation
                 </Link>
               </li>
             </ul>
@@ -91,7 +87,7 @@ export default function VocabularyPage() {
               </div>
             </div>
             <div className="hidden md:flex justify-center items-center -mr-24">
-              <CoreVisualization />
+              <GeodesicVisualization />
             </div>
         </section>
       </div>
