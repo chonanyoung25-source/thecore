@@ -3,7 +3,8 @@
 import AiChip from '@/components/ai-chip';
 import WavyLinesVisualization from '@/components/pyramid-visualization';
 import { Button } from '@/components/ui/button';
-import { ArrowUpRight, Expand, Search } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Expand, Search } from 'lucide-react';
+import Link from 'next/link';
 
 const RaiqaLabsLogo = () => (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +25,15 @@ export default function VocabularyPage() {
       
       <div className="absolute inset-0 z-10 mx-auto min-h-screen flex flex-col max-w-7xl p-6 md:p-8">
         
+        <div className="mb-4">
+          <Button asChild variant="ghost" className="pl-0 text-white/80 hover:text-white hover:bg-transparent">
+            <Link href="/" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              메인으로 돌아가기
+            </Link>
+          </Button>
+        </div>
+
         <header className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
             <RaiqaLabsLogo />
