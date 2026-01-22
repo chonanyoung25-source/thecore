@@ -10,6 +10,41 @@ const PyramidVisualization = () => {
     { name: 'Service', yPercent: 66 },
     { name: 'Ecosystem', yPercent: 84 },
   ];
+  
+  const pyramidApexY = 10;
+  const pyramidBaseY = 280;
+  const pyramidHeight = pyramidBaseY - pyramidApexY;
+
+  const renderLevels = () => {
+    const depthFactor = 0.8;
+    const yOffset = 8;
+
+    // We render slabs for the top 4 levels. The 5th level is the base.
+    return levels.slice(0, 4).map((level, i) => {
+      const yFront = pyramidApexY + pyramidHeight * (level.yPercent / 100);
+      const yBack = yFront - yOffset;
+      
+      const tFront = (yFront - pyramidApexY) / pyramidHeight;
+      const xFrontL = 200 * (1 - tFront) + 20 * tFront;
+      const xFrontR = 200 * (1 - tFront) + 380 * tFront;
+      
+      const frontWidth = xFrontR - xFrontL;
+      const backWidth = frontWidth * depthFactor;
+      
+      const xBackL = 200 - (backWidth / 2);
+      const xBackR = 200 + (backWidth / 2);
+
+      return (
+        <g key={`level-${i}`}>
+          {/* Top surface of the slab */}
+          <line x1={xFrontL} y1={yFront} x2={xFrontR} y2={yFront} /> {/* Front edge */}
+          <line x1={xBackL} y1={yBack} x2={xBackR} y2={yBack} /> {/* Back edge */}
+          <line x1={xFrontL} y1={yFront} x2={xBackL} y2={yBack} /> {/* Left side edge */}
+          <line x1={xFrontR} y1={yFront} x2={xBackR} y2={yBack} /> {/* Right side edge */}
+        </g>
+      );
+    });
+  }
 
   return (
     <div className="pyramid-container">
@@ -38,12 +73,12 @@ const PyramidVisualization = () => {
 
         {/* Left Face (darker) */}
         <polygon
-          points="200,10 20,200 200,280"
+          points={`200,${pyramidApexY} 20,${pyramidBaseY} 200,${pyramidBaseY}`}
           fill="url(#pyramid-gradient-left)"
         />
         {/* Right Face (lighter) */}
         <polygon
-          points="200,10 380,200 200,280"
+          points={`200,${pyramidApexY} 380,${pyramidBaseY} 200,${pyramidBaseY}`}
           fill="url(#pyramid-gradient-right)"
           className="pyramid-front-face"
         />
@@ -51,23 +86,18 @@ const PyramidVisualization = () => {
         {/* Wireframe and Layers */}
         <g stroke="hsl(var(--primary) / 0.9)" strokeWidth="1.5" fill="none" filter="url(#glow)">
           {/* Edges */}
-          <line x1="200" y1="10" x2="20" y2="200" />
-          <line x1="200" y1="10" x2="380" y2="200" />
-          <line x1="20" y1="200" x2="200" y2="280" />
-          <line x1="380" y1="200" x2="200" y2="280" />
-          <line x1="200" y1="10" x2="200" y2="280" />
-          
-          {/* Horizontal Layers */}
-          <line x1="148.85" y1="64" x2="251.15" y2="64" />
-          <line x1="97.7" y1="118" x2="302.3" y2="118" />
-          <line x1="46.53" y1="172" x2="353.47" y2="172" />
-          <line x1="78.5" y1="226" x2="321.5" y2="226" />
+          <line x1="200" y1={pyramidApexY} x2="20" y2={pyramidBaseY} />
+          <line x1="200" y1={pyramidApexY} x2="380" y2={pyramidBaseY} />
+          <line x1="20" y1={pyramidBaseY} x2="380" y2={pyramidBaseY} />
+          <line x1="200" y1={pyramidApexY} x2="200" y2={pyramidBaseY} />
+
+          {/* Render the 3D levels */}
+          {renderLevels()}
         </g>
       </svg>
       <div className="pyramid-labels">
         {levels.map((level) => {
-           // Adjust y-positioning to be relative to the new 3D perspective height
-           const visualY = 10 + (270 * level.yPercent) / 100;
+           const visualY = pyramidApexY + (pyramidHeight * level.yPercent) / 100;
            return (
              <div
               key={level.name}
