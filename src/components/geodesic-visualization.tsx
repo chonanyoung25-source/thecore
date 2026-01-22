@@ -13,7 +13,7 @@ const GeodesicVisualization = () => {
 
   useEffect(() => {
     // This code runs only on the client, after hydration, to avoid mismatches
-    const numParticles = 200;
+    const numParticles = 300; // Increased particle count
     const generatedParticles = Array.from({ length: numParticles }).map((_, i) => {
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos(2 * Math.random() - 1);
@@ -35,17 +35,24 @@ const GeodesicVisualization = () => {
     <div className="geodesic-container">
       {/* Geodesic Wireframe */}
       <div className="geodesic-sphere-wireframe">
-        {/* Vertical Rings */}
+        {/* Vertical Rings (Longitude) */}
         {Array.from({ length: 12 }).map((_, i) => (
            <div key={`v-ring-${i}`} className="geodesic-ring" style={{ transform: `rotateY(${i * 15}deg)` }}></div>
         ))}
-        {/* Horizontal Rings */}
+        {/* Horizontal Rings (Latitude) */}
         {Array.from({ length: 5 }).map((_, i) => (
            <div key={`h-ring-${i}`} className="geodesic-ring" style={{ transform: `rotateX(90deg) scale(${Math.sin(( (i + 1) / 6) * Math.PI)})` }}></div>
         ))}
+        {/* Diagonal Rings to create a triangular mesh look */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={`d1-ring-${i}`} className="geodesic-ring" style={{ transform: `rotateZ(${i * 30}deg) rotateX(60deg)` }}></div>
+        ))}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={`d2-ring-${i}`} className="geodesic-ring" style={{ transform: `rotateZ(${i * 30}deg) rotateX(-60deg)` }}></div>
+        ))}
       </div>
       
-      {/* Particles */}
+      {/* Particles at intersections */}
       <div className="geodesic-sphere-particles">
         {particles.map(p => (
            <div key={p.id} className="geodesic-particle" style={{ transform: p.transform, animationDelay: p.animationDelay }} />
