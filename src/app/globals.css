@@ -325,71 +325,61 @@
   to { transform: rotateZ(-360deg) translateX(330px) rotateZ(360deg); }
 }
 
-/* Pyramid Visualization for Vocabulary Page */
-.pyramid-container {
+/* Geodesic Sphere Visualization for Vocabulary Page */
+.geodesic-container {
   position: relative;
   width: 100%;
   max-width: 550px;
   height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  animation: spin-geodesic 60s linear infinite;
 }
 
-.pyramid-svg {
+@keyframes spin-geodesic {
+  from {
+    transform: rotateY(0deg) rotateX(10deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(10deg);
+  }
+}
+
+.geodesic-sphere {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 350px;
-  overflow: visible;
-  animation: float-pyramid 8s ease-in-out infinite;
+  width: 450px;
+  height: 450px;
+  transform-style: preserve-3d;
 }
 
-@keyframes float-pyramid {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+.geodesic-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid hsl(180 100% 75% / 0.4);
+  border-radius: 50%;
 }
 
-.pyramid-front-face {
-    animation: pulse-face 4s ease-in-out infinite alternate;
+.geodesic-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(180 100% 75%);
+  box-shadow: 0 0 8px hsl(180 100% 75%);
+  animation: twinkle-geodesic 4s infinite ease-in-out;
 }
 
-@keyframes pulse-face {
-    from { opacity: 0.7; }
-    to { opacity: 1; }
-}
-
-.pyramid-labels {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    pointer-events: none; /* So it doesn't interfere with anything */
-}
-
-.pyramid-label {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    transform: translateY(-50%);
-    color: hsl(var(--foreground));
-    font-size: 1rem;
-    white-space: nowrap;
-    opacity: 0.9;
-}
-
-.pyramid-label span {
-    position: relative;
-    padding-left: 20px;
-}
-
-.pyramid-label span::before {
-    content: '';
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    width: 12px;
-    height: 1px;
-    margin-right: 8px;
-    background: hsl(var(--foreground) / 0.8);
+@keyframes twinkle-geodesic {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

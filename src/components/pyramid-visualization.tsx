@@ -1,116 +1,77 @@
 'use client';
 
-import React from 'react';
+import { useEffect, useState } from 'react';
 
-const PyramidVisualization = () => {
-  const levels = [
-    { name: 'Purpose', yPercent: 12 },
-    { name: 'Market', yPercent: 30 },
-    { name: 'Brand', yPercent: 48 },
-    { name: 'Service', yPercent: 66 },
-    { name: 'Ecosystem', yPercent: 84 },
-  ];
-  
-  const pyramidApexY = 10;
-  const pyramidBaseY = 280;
-  const pyramidHeight = pyramidBaseY - pyramidApexY;
+type Particle = {
+  id: number;
+  transform: string;
+  animationDelay: string;
+};
 
-  const renderLevels = () => {
-    const depthFactor = 0.8;
-    const yOffset = 8;
+const GeodesicVisualization = () => {
+  const [particles, setParticles] = useState<Particle[]>([]);
 
-    // We render slabs for the top 4 levels. The 5th level is the base.
-    return levels.slice(0, 4).map((level, i) => {
-      const yFront = pyramidApexY + pyramidHeight * (level.yPercent / 100);
-      const yBack = yFront - yOffset;
-      
-      const tFront = (yFront - pyramidApexY) / pyramidHeight;
-      const xFrontL = 200 * (1 - tFront) + 20 * tFront;
-      const xFrontR = 200 * (1 - tFront) + 380 * tFront;
-      
-      const frontWidth = xFrontR - xFrontL;
-      const backWidth = frontWidth * depthFactor;
-      
-      const xBackL = 200 - (backWidth / 2);
-      const xBackR = 200 + (backWidth / 2);
+  useEffect(() => {
+    const numParticles = 200;
+    const radius = 225; // A bit smaller than the container
+    const generatedParticles = Array.from({ length: numParticles }).map(
+      (_, i) => {
+        const theta = Math.random() * 2 * Math.PI;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const x = radius * Math.sin(phi) * Math.cos(theta);
+        const y = radius * Math.sin(phi) * Math.sin(theta);
+        const z = radius * Math.cos(phi);
 
-      return (
-        <g key={`level-${i}`}>
-          {/* Top surface of the slab */}
-          <line x1={xFrontL} y1={yFront} x2={xFrontR} y2={yFront} /> {/* Front edge */}
-          <line x1={xBackL} y1={yBack} x2={xBackR} y2={yBack} /> {/* Back edge */}
-          <line x1={xFrontL} y1={yFront} x2={xBackL} y2={yBack} /> {/* Left side edge */}
-          <line x1={xFrontR} y1={yFront} x2={xBackR} y2={yBack} /> {/* Right side edge */}
-        </g>
-      );
-    });
-  }
+        return {
+          id: i,
+          transform: `translate3d(${x}px, ${y}px, ${z}px)`,
+          animationDelay: `${Math.random() * 5}s`,
+        };
+      }
+    );
+    setParticles(generatedParticles);
+  }, []);
 
   return (
-    <div className="pyramid-container">
-      <svg
-        viewBox="0 0 400 350"
-        className="pyramid-svg"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="pyramid-gradient-right" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))', stopOpacity: 0.5 }} />
-            <stop offset="100%" style={{ stopColor: 'hsl(var(--accent))', stopOpacity: 0.2 }} />
-          </linearGradient>
-          <linearGradient id="pyramid-gradient-left" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))', stopOpacity: 0.35 }} />
-            <stop offset="100%" style={{ stopColor: 'hsl(var(--accent))', stopOpacity: 0.1 }} />
-          </linearGradient>
-           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+    <div className="geodesic-container">
+      <div className="geodesic-sphere">
+        {/* Rings on 3 axes to create a dense mesh */}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={`ring-y-${i}`}
+            className="geodesic-ring"
+            style={{ transform: `rotateY(${i * 15}deg)` }}
+          />
+        ))}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={`ring-x-${i}`}
+            className="geodesic-ring"
+            style={{ transform: `rotateX(${i * 15}deg)` }}
+          />
+        ))}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={`ring-z-${i}`}
+            className="geodesic-ring"
+            style={{ transform: `rotateZ(${i * 15}deg)` }}
+          />
+        ))}
 
-        {/* Left Face (darker) */}
-        <polygon
-          points={`200,${pyramidApexY} 20,${pyramidBaseY} 200,${pyramidBaseY}`}
-          fill="url(#pyramid-gradient-left)"
-        />
-        {/* Right Face (lighter) */}
-        <polygon
-          points={`200,${pyramidApexY} 380,${pyramidBaseY} 200,${pyramidBaseY}`}
-          fill="url(#pyramid-gradient-right)"
-          className="pyramid-front-face"
-        />
-
-        {/* Wireframe and Layers */}
-        <g stroke="hsl(var(--primary) / 0.9)" strokeWidth="1.5" fill="none" filter="url(#glow)">
-          {/* Edges */}
-          <line x1="200" y1={pyramidApexY} x2="20" y2={pyramidBaseY} />
-          <line x1="200" y1={pyramidApexY} x2="380" y2={pyramidBaseY} />
-          <line x1="20" y1={pyramidBaseY} x2="380" y2={pyramidBaseY} />
-          <line x1="200" y1={pyramidApexY} x2="200" y2={pyramidBaseY} />
-
-          {/* Render the 3D levels */}
-          {renderLevels()}
-        </g>
-      </svg>
-      <div className="pyramid-labels">
-        {levels.map((level) => {
-           const visualY = pyramidApexY + (pyramidHeight * level.yPercent) / 100;
-           return (
-             <div
-              key={level.name}
-              className="pyramid-label"
-              style={{ top: `${visualY * 100 / 350}%`}}
-            >
-              <span>{level.name}</span>
-            </div>
-           )
-        })}
+        {/* Particles (nodes) */}
+        {particles.map((p) => (
+          <div
+            key={p.id}
+            className="geodesic-particle"
+            style={{
+              transform: p.transform,
+              animationDelay: p.animationDelay,
+            }}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-export default PyramidVisualization;
+export default GeodesicVisualization;
