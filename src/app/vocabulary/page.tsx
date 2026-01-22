@@ -16,7 +16,7 @@ export default function VocabularyPage() {
   const vocabImage = PlaceHolderImages.find(img => img.id === 'vocab-promo');
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-black text-foreground">
       <DynamicBackground />
       <div className="relative z-10 mx-auto min-h-screen flex flex-col max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="flex items-center justify-between py-8">
