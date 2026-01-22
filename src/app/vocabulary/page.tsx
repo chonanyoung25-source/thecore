@@ -21,9 +21,12 @@ export default function VocabularyPage() {
       <div className="relative z-10 mx-auto min-h-screen flex flex-col max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="flex items-center justify-between py-8">
           <div>
-            <p className="font-headline text-lg font-bold text-foreground">
-              CHO NANYOUNG
-            </p>
+            <Button asChild variant="ghost" className="text-foreground/80 hover:text-foreground font-headline">
+              <Link href="/" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Main
+              </Link>
+            </Button>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <ul className="flex items-center space-x-8">
