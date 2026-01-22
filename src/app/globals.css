@@ -325,60 +325,71 @@
   to { transform: rotateZ(-360deg) translateX(330px) rotateZ(360deg); }
 }
 
-/* Geodesic Visualization for Vocabulary Page */
-.geodesic-container {
+/* Pyramid Visualization for Vocabulary Page */
+.pyramid-container {
   position: relative;
-  width: 500px;
-  height: 500px;
-  transform-style: preserve-3d;
-  animation: spin-geodesic 60s linear infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@keyframes spin-geodesic {
-  from {
-    transform: rotateY(0deg) rotateX(10deg);
-  }
-  to {
-    transform: rotateY(360deg) rotateX(10deg);
-  }
-}
-
-.geodesic-sphere-wireframe, .geodesic-sphere-particles {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  transform-style: preserve-3d;
-}
-
-.geodesic-ring {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  border: 1px solid hsl(var(--foreground) / 0.15);
-  border-radius: 50%;
-  transform-style: preserve-3d;
+  max-width: 550px;
+  height: 350px;
 }
 
-.geodesic-particle {
+.pyramid-svg {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: hsl(var(--foreground) / 0.7);
-  box-shadow: 0 0 5px hsl(var(--foreground) / 0.5);
-  animation: twinkle-subtle 6s infinite ease-in-out;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 350px;
+  overflow: visible;
+  animation: float-pyramid 8s ease-in-out infinite;
 }
 
-@keyframes twinkle-subtle {
-  0%, 100% {
-    opacity: 0.2;
-    transform: scale(0.5);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes float-pyramid {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.pyramid-front-face {
+    animation: pulse-face 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-face {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+.pyramid-labels {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    pointer-events: none; /* So it doesn't interfere with anything */
+}
+
+.pyramid-label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    color: hsl(var(--foreground));
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+.pyramid-label span {
+    position: relative;
+    padding-left: 20px;
+}
+
+.pyramid-label span::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: 12px;
+    height: 1px;
+    margin-right: 8px;
+    background: hsl(var(--foreground) / 0.8);
 }

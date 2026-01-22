@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import DynamicBackground from '@/components/dynamic-background';
-import GeodesicVisualization from '@/components/geodesic-visualization';
+import PyramidVisualization from '@/components/pyramid-visualization';
 
 export default function VocabularyPage() {
   return (
@@ -86,8 +86,8 @@ export default function VocabularyPage() {
                 </Button>
               </div>
             </div>
-            <div className="hidden md:flex justify-center items-center -mr-24">
-              <GeodesicVisualization />
+            <div className="hidden md:flex justify-center items-center">
+              <PyramidVisualization />
             </div>
         </section>
       </div>
