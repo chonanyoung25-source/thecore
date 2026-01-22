@@ -59,6 +59,10 @@ const PyramidVisualization = () => {
             const x2 = 200 + halfWidth;
             return <line key={i} x1={x1} y1={y} x2={x2} y2={y} strokeWidth="1" />;
           })}
+
+          {/* Vertical lines to create triangle shapes */}
+          <line x1="200" y1="10" x2="140" y2="280" strokeWidth="1" />
+          <line x1="200" y1="10" x2="260" y2="280" strokeWidth="1" />
         </g>
       </svg>
       <div className="pyramid-labels">
