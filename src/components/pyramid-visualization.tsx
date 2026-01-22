@@ -1,77 +1,103 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-type Particle = {
-  id: number;
-  transform: string;
-  animationDelay: string;
-};
-
-const GeodesicVisualization = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
+const SwirlVisualization = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const numParticles = 200;
-    const radius = 225; // A bit smaller than the container
-    const generatedParticles = Array.from({ length: numParticles }).map(
-      (_, i) => {
-        const theta = Math.random() * 2 * Math.PI;
-        const phi = Math.acos(2 * Math.random() - 1);
-        const x = radius * Math.sin(phi) * Math.cos(theta);
-        const y = radius * Math.sin(phi) * Math.sin(theta);
-        const z = radius * Math.cos(phi);
+    const canvas = canvasRef.current;
+    if (!canvas || typeof window === 'undefined') return;
 
-        return {
-          id: i,
-          transform: `translate3d(${x}px, ${y}px, ${z}px)`,
-          animationDelay: `${Math.random() * 5}s`,
-        };
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    const dpr = window.devicePixelRatio || 1;
+
+    const resizeCanvas = () => {
+        if (!canvas.parentElement) return;
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+    };
+
+    resizeCanvas();
+
+    let rotation = Math.PI / 2;
+
+    const render = () => {
+      const width = canvas.width / dpr;
+      const height = canvas.height / dpr;
+      ctx.clearRect(0, 0, width * dpr, height * dpr);
+      
+      ctx.save();
+      ctx.translate(width / 2, height / 2);
+
+      const lineCount = 60;
+      const radius = Math.min(width, height) * 0.35;
+      const spacing = 1.2;
+      const tilt = -0.5;
+
+      ctx.shadowColor = 'hsl(160, 100%, 45%)';
+      ctx.shadowBlur = 20;
+      
+      const cosTilt = Math.cos(tilt);
+      const sinTilt = Math.sin(tilt);
+
+      for (let i = 0; i < lineCount; i++) {
+        ctx.beginPath();
+        const currentRadius = radius + i * spacing;
+        
+        for (let angle = 0; angle <= Math.PI * 2.01; angle += 0.05) {
+          const wave = Math.sin(angle * 4 + rotation) * 25;
+
+          // 3D point on a flat, wavy circle
+          let x = currentRadius * Math.cos(angle);
+          let y = wave;
+          let z = currentRadius * Math.sin(angle);
+
+          // Tilt it on its side
+          let tiltedY = y * cosTilt - z * sinTilt;
+          let tiltedZ = y * sinTilt + z * cosTilt;
+          
+          // Project to 2D
+          const perspective = 400;
+          const scale = perspective / (perspective + tiltedZ);
+          const projX = x * scale;
+          const projY = tiltedY * scale;
+
+          if (angle === 0) {
+            ctx.moveTo(projX, projY);
+          } else {
+            ctx.lineTo(projX, projY);
+          }
+        }
+        ctx.strokeStyle = `hsla(175, 100%, 70%, 0.4)`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
       }
-    );
-    setParticles(generatedParticles);
+
+      ctx.restore();
+      rotation += 0.008;
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    window.addEventListener('resize', resizeCanvas);
+    render();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+    };
   }, []);
 
   return (
-    <div className="geodesic-container">
-      <div className="geodesic-sphere">
-        {/* Rings on 3 axes to create a dense mesh */}
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={`ring-y-${i}`}
-            className="geodesic-ring"
-            style={{ transform: `rotateY(${i * 15}deg)` }}
-          />
-        ))}
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={`ring-x-${i}`}
-            className="geodesic-ring"
-            style={{ transform: `rotateX(${i * 15}deg)` }}
-          />
-        ))}
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={`ring-z-${i}`}
-            className="geodesic-ring"
-            style={{ transform: `rotateZ(${i * 15}deg)` }}
-          />
-        ))}
-
-        {/* Particles (nodes) */}
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className="geodesic-particle"
-            style={{
-              transform: p.transform,
-              animationDelay: p.animationDelay,
-            }}
-          />
-        ))}
-      </div>
+    <div className="absolute inset-0 flex items-center justify-center w-full h-full opacity-70">
+      <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
 };
 
-export default GeodesicVisualization;
+export default SwirlVisualization;
