@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import DynamicBackground from '@/components/dynamic-background';
-import PyramidVisualization from '@/components/pyramid-visualization';
+import CoreVisualization from '@/components/core-visualization';
 
 export default function VocabularyPage() {
   return (
@@ -87,7 +87,7 @@ export default function VocabularyPage() {
               </div>
             </div>
             <div className="hidden md:flex justify-center items-center">
-              <PyramidVisualization />
+              <CoreVisualization />
             </div>
         </section>
       </div>
