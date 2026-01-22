@@ -25,7 +25,7 @@ const SwirlVisualization = () => {
 
     resizeCanvas();
 
-    let rotation = Math.PI / 2;
+    let rotation = 0;
 
     const render = () => {
       const width = canvas.width / dpr;
@@ -36,54 +36,26 @@ const SwirlVisualization = () => {
       ctx.translate(width / 2, height / 2);
 
       const lineCount = 60;
-      // Reduced radius to prevent clipping
-      const radius = Math.min(width, height) * 0.25;
-      const spacing = 1.2;
-      const tilt = -0.5;
+      const baseRadius = Math.min(width, height) * 0.1;
+      const spacing = 2.5;
 
-      ctx.shadowColor = 'hsl(160, 100%, 45%)';
-      ctx.shadowBlur = 20;
+      ctx.shadowColor = 'hsl(175, 100%, 70%)';
+      ctx.shadowBlur = 15;
       
-      const cosTilt = Math.cos(tilt);
-      const sinTilt = Math.sin(tilt);
-
       for (let i = 0; i < lineCount; i++) {
         ctx.beginPath();
-        const currentRadius = radius + i * spacing;
+        const currentRadius = baseRadius + i * spacing;
+        ctx.arc(0, 0, currentRadius, 0, Math.PI * 2);
         
-        // Draw a full circle to ensure a closed loop
-        for (let angle = 0; angle <= Math.PI * 2 + 0.05; angle += 0.05) {
-          // Reduced wave amplitude
-          const wave = Math.sin(angle * 4 + rotation) * 20;
-
-          // 3D point on a flat, wavy circle
-          let x = currentRadius * Math.cos(angle);
-          let y = wave;
-          let z = currentRadius * Math.sin(angle);
-
-          // Tilt it on its side
-          let tiltedY = y * cosTilt - z * sinTilt;
-          let tiltedZ = y * sinTilt + z * cosTilt;
-          
-          // Project to 2D
-          const perspective = 400;
-          const scale = perspective / (perspective + tiltedZ);
-          const projX = x * scale;
-          const projY = tiltedY * scale;
-
-          if (angle === 0) {
-            ctx.moveTo(projX, projY);
-          } else {
-            ctx.lineTo(projX, projY);
-          }
-        }
-        ctx.strokeStyle = `hsla(175, 100%, 70%, 0.4)`;
+        // Create a pulsing ripple effect
+        const opacity = (Math.sin(i * 0.2 - rotation) + 1) / 2 * 0.5 + 0.1;
+        ctx.strokeStyle = `hsla(175, 100%, 70%, ${opacity})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
 
       ctx.restore();
-      rotation += 0.008;
+      rotation += 0.03;
       animationFrameId = requestAnimationFrame(render);
     };
 
