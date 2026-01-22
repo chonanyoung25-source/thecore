@@ -36,7 +36,8 @@ const SwirlVisualization = () => {
       ctx.translate(width / 2, height / 2);
 
       const lineCount = 60;
-      const radius = Math.min(width, height) * 0.35;
+      // Reduced radius to prevent clipping
+      const radius = Math.min(width, height) * 0.25;
       const spacing = 1.2;
       const tilt = -0.5;
 
@@ -50,8 +51,10 @@ const SwirlVisualization = () => {
         ctx.beginPath();
         const currentRadius = radius + i * spacing;
         
-        for (let angle = 0; angle <= Math.PI * 2.01; angle += 0.05) {
-          const wave = Math.sin(angle * 4 + rotation) * 25;
+        // Draw a full circle to ensure a closed loop
+        for (let angle = 0; angle <= Math.PI * 2 + 0.05; angle += 0.05) {
+          // Reduced wave amplitude
+          const wave = Math.sin(angle * 4 + rotation) * 20;
 
           // 3D point on a flat, wavy circle
           let x = currentRadius * Math.cos(angle);
