@@ -56,6 +56,12 @@ const PyramidVisualization = () => {
           <line x1="20" y1="200" x2="200" y2="280" />
           <line x1="380" y1="200" x2="200" y2="280" />
           <line x1="200" y1="10" x2="200" y2="280" />
+          
+          {/* Horizontal Layers */}
+          <line x1="148.85" y1="64" x2="251.15" y2="64" />
+          <line x1="97.7" y1="118" x2="302.3" y2="118" />
+          <line x1="46.53" y1="172" x2="353.47" y2="172" />
+          <line x1="78.5" y1="226" x2="321.5" y2="226" />
         </g>
       </svg>
       <div className="pyramid-labels">
