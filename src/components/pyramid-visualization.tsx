@@ -11,6 +11,10 @@ const PyramidVisualization = () => {
     { name: 'Ecosystem', yPercent: 84 },
   ];
 
+  const pyramidHeight = 270;
+  const pyramidApexY = 10;
+  const numLevels = 5;
+
   return (
     <div className="pyramid-container">
       <svg
@@ -45,6 +49,16 @@ const PyramidVisualization = () => {
           <line x1="200" y1="10" x2="20" y2="280" />
           <line x1="200" y1="10" x2="380" y2="280" />
           <line x1="20" y1="280" x2="380" y2="280" strokeWidth="2.5" />
+
+          {/* Horizontal lines to create levels */}
+          {Array.from({ length: numLevels - 1 }).map((_, i) => {
+            const y = pyramidApexY + (pyramidHeight / numLevels) * (i + 1);
+            const progress = (y - pyramidApexY) / pyramidHeight;
+            const halfWidth = 180 * progress;
+            const x1 = 200 - halfWidth;
+            const x2 = 200 + halfWidth;
+            return <line key={i} x1={x1} y1={y} x2={x2} y2={y} strokeWidth="1" />;
+          })}
         </g>
       </svg>
       <div className="pyramid-labels">
