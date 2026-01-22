@@ -74,20 +74,6 @@ const PyramidVisualization = () => {
           <line x1="20" y1="280" x2="100" y2="310" strokeOpacity="0.5"/>
           <line x1="380" y1="280" x2="300" y2="310" strokeOpacity="0.5"/>
           <line x1="100" y1="310" x2="300" y2="310" strokeOpacity="0.5"/>
-
-          {/* Horizontal Layers */}
-          {levels.map((level) => {
-            const y = 10 + (270 * level.yPercent) / 100;
-            const width = 360 * (1 - (level.yPercent / 100));
-            const x1 = 200 - width / 2;
-            const x2 = 200 + width / 2;
-            
-            return (
-                <g key={level.name}>
-                    <line x1={x1} y1={y} x2={x2} y2={y} strokeWidth="2" />
-                </g>
-             )
-          })}
         </g>
       </svg>
       <div className="pyramid-labels">
