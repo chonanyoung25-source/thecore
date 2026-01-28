@@ -13,7 +13,7 @@ const CoreVisualization = () => {
 
   useEffect(() => {
     // This code runs only on the client, after hydration, to avoid mismatches
-    const numParticles = 50;
+    const numParticles = 30; // Reduced from 50 for better performance
     const generatedParticles = Array.from({ length: numParticles }).map((_, i) => {
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos(2 * Math.random() - 1);
@@ -21,7 +21,7 @@ const CoreVisualization = () => {
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
       const z = radius * Math.cos(phi);
-      
+
       return {
         id: i,
         transform: `translate3d(${x}px, ${y}px, ${z}px)`,
@@ -39,16 +39,16 @@ const CoreVisualization = () => {
       <div className="geo-sphere">
         {/* Vertical Rings */}
         {Array.from({ length: 12 }).map((_, i) => (
-           <div key={`v-ring-${i}`} className="geo-ring" style={{ transform: `rotateY(${i * 15}deg)` }}></div>
+          <div key={`v-ring-${i}`} className="geo-ring" style={{ transform: `rotateY(${i * 15}deg)` }}></div>
         ))}
         {/* Horizontal Rings */}
         {Array.from({ length: 5 }).map((_, i) => (
-           <div key={`h-ring-${i}`} className="geo-ring" style={{ transform: `rotateX(90deg) rotateY(${i * 36}deg) scale(${Math.sin(( (i + 1) / 6) * Math.PI)})` }}></div>
+          <div key={`h-ring-${i}`} className="geo-ring" style={{ transform: `rotateX(90deg) rotateY(${i * 36}deg) scale(${Math.sin(((i + 1) / 6) * Math.PI)})` }}></div>
         ))}
 
         {/* Particles */}
         {particles.map(p => (
-           <div key={p.id} className="particle" style={{ transform: p.transform, animationDelay: p.animationDelay }} />
+          <div key={p.id} className="particle" style={{ transform: p.transform, animationDelay: p.animationDelay }} />
         ))}
       </div>
 

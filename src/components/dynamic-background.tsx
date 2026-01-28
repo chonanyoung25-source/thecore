@@ -15,7 +15,7 @@ const DynamicBackground = () => {
   const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-    const numStars = 250;
+    const numStars = 60; // Reduced from 100 for better performance
     const generatedStars = Array.from({ length: numStars }).map((_, i) => ({
       id: i,
       size: Math.random() * 2 + 1, // 1px to 3px

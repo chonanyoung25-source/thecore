@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { addErrorWord } from '@/lib/error-note-storage';
 import { ArrowLeft, LoaderCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -20,12 +21,14 @@ export default function VocabularyQuizPage() {
   const [loading, setLoading] = useState(true);
   const [answered, setAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [addedToErrorNote, setAddedToErrorNote] = useState(false);
 
   const fetchQuiz = async () => {
     setLoading(true);
     setAnswered(false);
     setSelectedAnswer(null);
     setQuiz(null);
+    setAddedToErrorNote(false);
     try {
       const newQuiz = await generateVocabularyQuiz();
       setQuiz(newQuiz);
@@ -45,6 +48,21 @@ export default function VocabularyQuizPage() {
     if (answered || !quiz) return;
     setAnswered(true);
     setSelectedAnswer(option);
+
+    // If answer is wrong, add to error notes
+    if (option !== quiz.answer) {
+      // Generate a unique ID for AI-generated quiz words
+      const wordId = `quiz-${quiz.word.toLowerCase()}`;
+      addErrorWord(
+        wordId,
+        quiz.word,
+        quiz.answer,
+        'n./v./adj.', // We don't have part of speech from AI quiz
+        quiz.explanation,
+        0 // Phase 0 for AI-generated quizzes
+      );
+      setAddedToErrorNote(true);
+    }
   };
 
   const isCorrect = quiz && selectedAnswer === quiz.answer;
@@ -52,11 +70,16 @@ export default function VocabularyQuizPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-background text-foreground p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-2xl">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <Button asChild variant="ghost" className="pl-0">
             <Link href="/" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
               Back to Home
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-50">
+            <Link href="/error-note" className="flex items-center gap-2">
+              📝 My Error Note
             </Link>
           </Button>
         </div>
@@ -96,8 +119,8 @@ export default function VocabularyQuizPage() {
                           : answered &&
                             option === selectedAnswer &&
                             option !== quiz.answer
-                          ? 'destructive'
-                          : 'outline'
+                            ? 'destructive'
+                            : 'outline'
                       }
                       className={cn(
                         'h-auto justify-start p-4 text-left transition-all leading-normal',
@@ -142,6 +165,14 @@ export default function VocabularyQuizPage() {
                     <p className="mt-2 text-sm text-muted-foreground">
                       {quiz.explanation}
                     </p>
+                    {addedToErrorNote && (
+                      <div className="mt-3 flex items-center gap-2 p-3 bg-purple-50 border border-purple-200 rounded-md">
+                        <span className="text-purple-600">📝</span>
+                        <p className="text-sm text-purple-700 font-medium">
+                          오답 노트에 추가되었습니다!
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
                 <Button

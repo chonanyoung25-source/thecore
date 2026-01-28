@@ -8,30 +8,31 @@ const WavyLinesVisualization = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
     let frame = 0;
+    let animationId: number;
 
     const handleResize = () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
     };
 
     window.addEventListener('resize', handleResize);
 
     const opts = {
-      lineCount: 80,
+      lineCount: 50, // Reduced from 80
       waveAmplitude: 150,
       waveLength: 0.3,
       waveSpeed: 0.02,
-      xSpacing: 1,
+      xSpacing: 2, // Increased from 1 for better performance
       ySpacing: 12,
-      baseHue: 180,
+      baseHue: 180, // Original cyan/turquoise color
       hueVariation: 40,
-      glow: 10,
+      glow: 15, // Increased for more visibility
     };
 
     const drawGrid = () => {
@@ -51,19 +52,27 @@ const WavyLinesVisualization = () => {
       }
     };
 
+    // Pre-generate stars once instead of every frame
+    const stars: Array<{ x: number, y: number, radius: number, opacity: number }> = [];
+    const numStars = 100; // Reduced from 200
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        radius: Math.random() * 1.2,
+        opacity: Math.random() * 0.5 + 0.3
+      });
+    }
+
     const drawStars = () => {
-        ctx.save();
-        const numStars = 200;
-        for (let i = 0; i < numStars; i++) {
-            const x = Math.random() * w;
-            const y = Math.random() * h;
-            const radius = Math.random() * 1.2;
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3})`;
-            ctx.fill();
-        }
-        ctx.restore();
+      ctx.save();
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+      });
+      ctx.restore();
     }
 
     function loop() {
@@ -71,15 +80,16 @@ const WavyLinesVisualization = () => {
       frame += opts.waveSpeed;
 
       drawGrid();
-      
+      drawStars();
+
       ctx.save();
       ctx.shadowBlur = opts.glow;
 
       for (let i = 0; i < opts.lineCount; i++) {
         ctx.beginPath();
         const hue = opts.baseHue + (i / opts.lineCount) * opts.hueVariation;
-        ctx.strokeStyle = `hsla(${hue}, 70%, 60%, ${0.3 + (i / opts.lineCount) * 0.7})`;
-        ctx.shadowColor = `hsla(${hue}, 70%, 60%, 1)`;
+        ctx.strokeStyle = `hsla(${hue}, 80%, 65%, ${0.4 + (i / opts.lineCount) * 0.6})`; // Increased saturation and lightness for visibility
+        ctx.shadowColor = `hsla(${hue}, 80%, 65%, 1)`;
 
         let yOffset = h * 0.45 + i * opts.ySpacing;
 
@@ -90,25 +100,25 @@ const WavyLinesVisualization = () => {
             yOffset +
             Math.sin(x * (opts.waveLength / 1000) + frame + i * 0.05) * opts.waveAmplitude * amplitudeFactor +
             Math.cos(x * 0.0005 + frame * 0.5) * (opts.waveAmplitude * 0.3) * amplitudeFactor;
-            
+
           ctx.lineTo(x, y);
         }
         ctx.stroke();
       }
-      
+
       ctx.restore();
-      requestAnimationFrame(loop);
+      animationId = requestAnimationFrame(loop);
     }
-    
-    drawStars();
+
     loop();
 
     return () => {
-        window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationId);
     }
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute top-0 left-0 -z-0" />;
+  return <canvas ref={canvasRef} className="absolute top-0 left-0 -z-0" style={{ willChange: 'transform' }} />;
 };
 
 export default WavyLinesVisualization;

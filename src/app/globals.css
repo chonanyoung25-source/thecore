@@ -24,7 +24,7 @@
 
     --accent: 233 44% 56%;
     --accent-foreground: 210 40% 98%;
-    
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
@@ -72,7 +72,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 231 48% 48%;
-    
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -88,15 +88,24 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
   .star-bg {
     animation: twinkle-bg ease-in-out infinite alternate;
+    will-change: opacity;
   }
+
   .animated-gradient-text {
     background: linear-gradient(to right, hsl(var(--foreground)), hsl(204, 100%, 70%), hsl(var(--foreground)));
     background-size: 200% auto;
@@ -104,19 +113,53 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: text-gradient-anim 4s linear infinite;
+    will-change: background-position;
+  }
+
+  .vocabulary-gradient-text {
+    background: linear-gradient(to right, #c084fc, #06b6d4, #03c75a, #06b6d4, #c084fc);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: vocabulary-gradient-anim 6s linear infinite;
+    will-change: background-position;
   }
 }
 
 @keyframes text-gradient-anim {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes vocabulary-gradient-anim {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes twinkle-bg {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -131,12 +174,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: transform;
 }
 
 @keyframes spin-all {
   from {
     transform: rotateY(0deg) rotateX(10deg);
   }
+
   to {
     transform: rotateY(360deg) rotateX(10deg);
   }
@@ -146,15 +191,19 @@
   from {
     transform: rotateY(0deg) rotateX(-10deg);
   }
+
   to {
     transform: rotateY(-360deg) rotateX(-10deg);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
   }
+
   50% {
     box-shadow: 0 0 30px hsl(var(--primary) / 0.7), 0 0 60px hsl(var(--primary) / 0.5);
   }
@@ -187,13 +236,17 @@
   background: hsl(var(--accent-foreground) / 0.8);
   box-shadow: 0 0 8px hsl(var(--accent-foreground) / 0.6);
   animation: twinkle 4s infinite ease-in-out;
+  will-change: opacity, transform;
 }
 
 @keyframes twinkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(0.5);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
@@ -206,15 +259,17 @@
   height: 450px;
   transform-style: preserve-3d;
   animation: spin-geo 40s linear infinite reverse;
+  will-change: transform;
 }
 
 @keyframes spin-geo {
-    from {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-    to {
-        transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
-    }
+  from {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+  }
 }
 
 .geo-ring {
@@ -231,6 +286,7 @@
   border: 1px solid hsl(var(--foreground) / 0.7);
   border-radius: 50%;
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .orbit-1 {
@@ -255,16 +311,33 @@
 }
 
 @keyframes spin-orbit-1 {
-  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(20deg); }
-  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(20deg); }
+  from {
+    transform: rotateZ(0deg) rotateX(70deg) rotateY(20deg);
+  }
+
+  to {
+    transform: rotateZ(360deg) rotateX(70deg) rotateY(20deg);
+  }
 }
+
 @keyframes spin-orbit-2 {
-  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(140deg); }
-  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(140deg); }
+  from {
+    transform: rotateZ(0deg) rotateX(70deg) rotateY(140deg);
+  }
+
+  to {
+    transform: rotateZ(360deg) rotateX(70deg) rotateY(140deg);
+  }
 }
+
 @keyframes spin-orbit-3 {
-  from { transform: rotateZ(0deg) rotateX(70deg) rotateY(260deg); }
-  to { transform: rotateZ(360deg) rotateX(70deg) rotateY(260deg); }
+  from {
+    transform: rotateZ(0deg) rotateX(70deg) rotateY(260deg);
+  }
+
+  to {
+    transform: rotateZ(360deg) rotateX(70deg) rotateY(260deg);
+  }
 }
 
 
@@ -307,20 +380,38 @@
   from {
     transform: rotateY(360deg) rotateX(10deg);
   }
+
   to {
     transform: rotateY(0deg) rotateX(10deg);
   }
 }
 
 @keyframes move-sat-1 {
-  from { transform: rotateZ(0deg) translateX(285px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(285px) rotateZ(360deg); }
+  from {
+    transform: rotateZ(0deg) translateX(285px) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(-360deg) translateX(285px) rotateZ(360deg);
+  }
 }
+
 @keyframes move-sat-2 {
-  from { transform: rotateZ(0deg) translateX(240px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(240px) rotateZ(360deg); }
+  from {
+    transform: rotateZ(0deg) translateX(240px) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(-360deg) translateX(240px) rotateZ(360deg);
+  }
 }
+
 @keyframes move-sat-3 {
-  from { transform: rotateZ(0deg) translateX(330px) rotateZ(0deg); }
-  to { transform: rotateZ(-360deg) translateX(330px) rotateZ(360deg); }
+  from {
+    transform: rotateZ(0deg) translateX(330px) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(-360deg) translateX(330px) rotateZ(360deg);
+  }
 }
