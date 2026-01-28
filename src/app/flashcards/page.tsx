@@ -18,7 +18,10 @@ import Link from 'next/link';
 // --- Types ---
 type CardFace = 'front' | 'back';
 
-export default function FlashcardsPage() {
+import { Suspense } from 'react';
+
+// --- Content Component ---
+function FlashcardsContent() {
     const searchParams = useSearchParams();
     const phaseParam = searchParams.get('phase');
 
@@ -228,7 +231,7 @@ export default function FlashcardsPage() {
             {/* --- RESULTS SCREEN --- */}
             {showResults && (
                 <div className="flex-1 flex flex-col items-center justify-center p-6 animate-in zoom-in-95 duration-500">
-                    <div className="bg-slate-900 border border-slate-800 rounded-[40px] p-10 max-w-sm w-full text-center shadow-2xl relative overflow-hidden">
+                    <div className="bg-slate-900 border border-slate-800 rounded-[40px] p-10 max-sm w-full text-center shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 to-teal-500" />
 
                         <h2 className="text-3xl font-black text-white mb-2">SESSION DONE</h2>
@@ -271,5 +274,17 @@ export default function FlashcardsPage() {
                 .backface-hidden { backface-visibility: hidden; }
             `}</style>
         </main>
+    );
+}
+
+export default function FlashcardsPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+            </div>
+        }>
+            <FlashcardsContent />
+        </Suspense>
     );
 }

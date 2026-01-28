@@ -36,7 +36,10 @@ const SHAKE_ANIMATION = `
 }
 `;
 
-export default function SpeedQuizPage() {
+import { Suspense } from 'react';
+
+// --- Components ---
+function SpeedQuizContent() {
     const searchParams = useSearchParams(); // Read URL params
     const initialAutoStartDone = useRef(false);
 
@@ -434,5 +437,17 @@ export default function SpeedQuizPage() {
                 </div>
             )}
         </main>
+    );
+}
+
+export default function SpeedQuizPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+            </div>
+        }>
+            <SpeedQuizContent />
+        </Suspense>
     );
 }
