@@ -76,6 +76,7 @@ const WavyLinesVisualization = () => {
     }
 
     function loop() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, w, h);
       frame += opts.waveSpeed;
 
